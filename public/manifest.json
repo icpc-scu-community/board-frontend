@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Newcomers board",
+  "name": "Newcomers training board",
   "icons": [
     {
       "src": "favicon.ico",
