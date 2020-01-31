@@ -5,9 +5,10 @@ import './styles.css';
 
 class Trainee extends React.Component {
   render() {
-    const { name, handle } = this.props;
+    const { name, handle, states } = this.props;
     const shortName = getShortName(name);
     const colorPercent = getUniqueHashFromName(name);
+    const { solved, tried, missed, submissions } = states;
 
     return (
       <div className="trainee">
@@ -28,6 +29,12 @@ class Trainee extends React.Component {
               @{handle.trim()}
             </a>
           </div>
+          <div className="states">
+            <div className="solved">{solved}</div>
+            <div className="tried">{tried}</div>
+            <div className="missed">{missed}</div>
+            <div className="submissions">{submissions}</div>
+          </div>
         </div>
       </div>
     );
@@ -36,7 +43,13 @@ class Trainee extends React.Component {
 
 Trainee.propTypes = {
   name: PropTypes.string.isRequired,
-  handle: PropTypes.string.isRequired
+  handle: PropTypes.string.isRequired,
+  states: PropTypes.shape({
+    solved: PropTypes.number.isRequired,
+    tried: PropTypes.number.isRequired,
+    missed: PropTypes.number.isRequired,
+    submissions: PropTypes.number.isRequired
+  }).isRequired
 };
 
 export default Trainee;
