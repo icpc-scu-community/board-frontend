@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Trainee } from '../Trainee';
+import { sheetNameHeight, sheetProblemIdHeight } from '../common';
+import Trainee from '../Trainee';
 import './styles.css';
 
 class TraineeList extends React.Component {
@@ -11,7 +12,7 @@ class TraineeList extends React.Component {
       <div className="trainee-list">
         <table className="trainee-list-table">
           <thead className="header">
-            <tr>
+            <tr style={{ height: sheetNameHeight + sheetProblemIdHeight }}>
               <td>Trainee</td>
               <td>Progress</td>
             </tr>

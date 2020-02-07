@@ -1,0 +1,28 @@
+.board {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+/* trainees */
+.board .trainees-section {
+  background-color: white;
+  position: sticky;
+  left: 0;
+}
+
+/* sheets */
+.board .sheets-section .sheets {
+  display: flex;
+  flex-direction: row;
+}
+
+.board .sheets-section .sheets .sheet-collection {
+  border-top: 1px solid #535353;
+  border-right: 1px solid #535353;
+  border-bottom: 1px solid #535353;
+}
+
+.board .sheets-section .sheets .sheet-collection:first-of-type {
+  border-left: 1px solid #535353;
+}
