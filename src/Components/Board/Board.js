@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { blockSize } from '../common';
 import { TraineeList } from '../TraineeList';
 import Sheet from '../Sheet';
 import './styles.css';
@@ -21,7 +22,22 @@ class Board extends React.Component {
               </div>
             ))}
           </div>
-          <div>Hi</div>
+          <div className="trainee-problems-status">
+            {trainees.map(() => (
+              <div className="trainee-problems-row">
+                {sheets.map(({ problems }) =>
+                  problems.map(({ id }) => (
+                    <div
+                      className="trainee-problems-cell ac"
+                      style={{ width: blockSize, height: blockSize }}
+                    >
+                      AC
+                    </div>
+                  ))
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );

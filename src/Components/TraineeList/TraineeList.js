@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sheetNameHeight, sheetProblemIdHeight } from '../common';
+import { sheetNameHeight, sheetProblemIdHeight, blockSize } from '../common';
 import Trainee from '../Trainee';
 import './styles.css';
 
@@ -19,7 +19,7 @@ class TraineeList extends React.Component {
           </thead>
           <tbody>
             {trainees.map(({ name, handle, states }) => (
-              <tr key={handle}>
+              <tr key={handle} style={{ height: blockSize }}>
                 <td className="trainee-cell">
                   <Trainee name={name} handle={handle} states={states} />
                 </td>
