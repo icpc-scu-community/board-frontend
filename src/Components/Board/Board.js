@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { blockSize } from '../common';
+import { blockSize, paddingBetweenRows } from '../common';
 import { TraineeList } from '../TraineeList';
 import Sheet from '../Sheet';
 import styles from './styles';
@@ -23,9 +23,22 @@ class Board extends React.Component {
                 </div>
               ))}
             </div>
-            <div className="trainee-problems-status">
+            <div
+              className="trainee-problems-status"
+              style={{
+                paddingTop: paddingBetweenRows,
+                paddingBottom: paddingBetweenRows
+              }}
+            >
               {trainees.map((_, index) => (
-                <div key={index} className="trainee-problems-row">
+                <div
+                  key={index}
+                  className="trainee-problems-row"
+                  style={{
+                    paddingTop: paddingBetweenRows,
+                    paddingBottom: paddingBetweenRows
+                  }}
+                >
                   {sheets.map(({ problems }) =>
                     problems.map(({ id }) => (
                       <div

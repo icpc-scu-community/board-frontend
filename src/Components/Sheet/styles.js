@@ -8,9 +8,10 @@ export default css`
     align-items: center;
     font-size: 14px;
     text-decoration: none;
-    border-bottom: 1px solid #e1e1e1;
-    background-color: #e1e1e1;
     color: #535353;
+    border-bottom: 1px solid #535353;
+    background-color: #e1e1e1;
+    box-sizing: border-box;
   }
 
   .sheet .problems {
