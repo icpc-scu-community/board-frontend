@@ -6,6 +6,8 @@ export default css`
   .trainee-list {
     display: flex;
     flex-direction: column;
+    background: white;
+    padding: 0 10px;
   }
 
   .trainee-list .header {
@@ -16,6 +18,10 @@ export default css`
     text-transform: uppercase;
     font-size: 14px;
     cursor: default;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
   .list-item {

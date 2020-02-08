@@ -5,21 +5,24 @@ export default css`
     display: flex;
     flex-direction: row;
     overflow: auto;
+    position: fixed;
+    width: 100%;
+    height: 100%;
   }
 
   /* trainees */
   .board .trainees-section {
-    background-color: white;
     position: sticky;
     left: 0;
     z-index: 1;
-    padding: 0 10px;
   }
 
   /* sheets */
   .board .sheets-section .sheets {
     display: flex;
     flex-direction: row;
+    position: sticky;
+    top: 0;
   }
 
   .board .sheets-section .trainee-problems-status {
