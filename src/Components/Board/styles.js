@@ -37,6 +37,7 @@ export default css`
 
   .board .sheets-section .trainee-problems-status .trainee-problems-cell {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-top: 1px solid;
@@ -55,5 +56,21 @@ export default css`
   .board .sheets-section .trainee-problems-status .trainee-problems-cell.ac {
     background-color: lightgreen;
     border-color: green;
+  }
+
+  .board
+    .sheets-section
+    .trainee-problems-status
+    .trainee-problems-cell.not-ac {
+    background-color: orangered;
+    border-color: blue;
+  }
+
+  .board
+    .sheets-section
+    .trainee-problems-status
+    .trainee-problems-cell.not-solved {
+    background-color: lightgrey;
+    border-color: grey;
   }
 `;

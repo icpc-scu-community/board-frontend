@@ -160,14 +160,29 @@ const App = () => {
         { id: 'B', name: 'Find Length' },
         { id: 'C', name: "Let's use Getline" },
         { id: 'D', name: 'Compare' },
-        { id: 'E', name: 'Strings' }
+        { id: 'E', name: 'Strings Strings Strings' }
       ]
     }
   ];
 
+  const submissions = {
+    'ahmed.7oskaa': {
+      // '219158-A': {
+      //   verdict: 'AC',
+      //   list: [{ id: '' }]
+      // },
+      // '219158-B': {
+      //   verdict: 'WA',
+      //   list: [
+      //     // { id:  }
+      //   ]
+      // }
+    }
+  };
+
   return (
     <div className="App">
-      <Board sheets={sheets} trainees={trainees} />
+      <Board sheets={sheets} trainees={trainees} submissions={submissions} />
     </div>
   );
 };

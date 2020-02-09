@@ -48,6 +48,14 @@ export default css`
     visibility: hidden;
   }
 
+  .sheet .problems .problem:first-child .details {
+    left: 0;
+  }
+
+  .sheet .problems .problem:last-child .details {
+    right: 0;
+  }
+
   .sheet .problems .problem:hover .details {
     opacity: 1;
     visibility: visible;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import { blockSize, paddingBetweenRows } from '../common';
 import { TraineeList } from '../TraineeList';
 import Sheet from '../Sheet';
@@ -7,7 +8,7 @@ import styles from './styles';
 
 class Board extends React.Component {
   render() {
-    const { sheets, trainees } = this.props;
+    const { sheets, trainees, submissions } = this.props;
 
     return (
       <>
@@ -30,7 +31,7 @@ class Board extends React.Component {
                 paddingBottom: paddingBetweenRows
               }}
             >
-              {trainees.map((_, index) => (
+              {trainees.map(({ handle }, index) => (
                 <div
                   key={index}
                   className="trainee-problems-row"
@@ -39,16 +40,35 @@ class Board extends React.Component {
                     paddingBottom: paddingBetweenRows
                   }}
                 >
-                  {sheets.map(({ problems }) =>
-                    problems.map(({ id }) => (
-                      <div
-                        key={id}
-                        className="trainee-problems-cell ac"
-                        style={{ width: blockSize, height: blockSize }}
-                      >
-                        AC
-                      </div>
-                    ))
+                  {sheets.map(({ id: sheetId, problems }) =>
+                    problems.map(({ id: problemId }) => {
+                      const submission =
+                        (submissions[handle] &&
+                          submissions[handle][`${sheetId}-${problemId}`]) ||
+                        {};
+
+                      return (
+                        <div
+                          key={`${sheetId}-${problemId}`}
+                          className={cn('trainee-problems-cell', {
+                            ac: submission.verdict === 'AC',
+                            'not-ac': submission.verdict !== 'AC',
+                            'not-solved': submission.verdict === undefined
+                          })}
+                          style={{ width: blockSize, height: blockSize }}
+                        >
+                          {submission.verdict ? (
+                            <>
+                              <div>{submission.verdict}</div>
+                              <div>+10</div>
+                              {/* <div className="list"></div> */}
+                            </>
+                          ) : (
+                            <div>?</div>
+                          )}
+                        </div>
+                      );
+                    })
                   )}
                 </div>
               ))}
@@ -63,7 +83,8 @@ class Board extends React.Component {
 
 Board.propTypes = {
   sheets: PropTypes.array.isRequired,
-  trainees: PropTypes.array.isRequired
+  trainees: PropTypes.array.isRequired,
+  submissions: PropTypes.object.isRequired
 };
 
 export default Board;

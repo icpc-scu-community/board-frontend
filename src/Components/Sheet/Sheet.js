@@ -35,7 +35,7 @@ class Sheet extends React.Component {
                   className="details"
                   style={{ top: sheetProblemIdHeight - 5 }}
                 >
-                  {problem.name}
+                  {`${problem.id}. ${problem.name}`}
                 </div>
               </a>
             ))}
