@@ -5,10 +5,11 @@ import styles from './styles';
 
 class Trainee extends React.Component {
   render() {
-    const { name, handle, states } = this.props;
+    const { name, handle, states, problemsCount } = this.props;
     const shortName = getShortName(name);
     const colorPercent = getUniqueHashFromName(name);
-    const { solved, tried, missed, submissions } = states;
+    const { solved, tried, submissions } = states;
+    const missed = problemsCount - (solved + tried);
 
     return (
       <>
@@ -31,10 +32,22 @@ class Trainee extends React.Component {
               </a>
             </div>
             <div className="states">
-              <div className="solved">{solved}</div>
-              <div className="tried">{tried}</div>
-              <div className="missed">{missed}</div>
-              <div className="submissions">{submissions}</div>
+              <div className="state solved">
+                {solved}
+                <div className="note">Solved</div>
+              </div>
+              <div className="state tried">
+                {tried}
+                <div className="note">Tried but not solved yet</div>
+              </div>
+              <div className="state missed">
+                {missed}
+                <div className="note">Not solved nor tried yet</div>
+              </div>
+              <div className="state submissions">
+                {submissions}
+                <div className="note">Total submissions</div>
+              </div>
             </div>
           </div>
         </div>
@@ -50,9 +63,9 @@ Trainee.propTypes = {
   states: PropTypes.shape({
     solved: PropTypes.number.isRequired,
     tried: PropTypes.number.isRequired,
-    missed: PropTypes.number.isRequired,
     submissions: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  problemsCount: PropTypes.number.isRequired
 };
 
 export default Trainee;

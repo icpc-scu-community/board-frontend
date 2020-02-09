@@ -51,19 +51,21 @@ export default css`
     margin-top: 2px;
   }
 
-  .info .states > * {
+  .states .state {
+    position: relative;
     display: flex;
     align-items: center;
     font-size: 10px;
     color: grey;
     min-width: 20px;
+    cursor: default;
   }
 
-  .info .states > *:not(:last-of-type) {
+  .states .state:not(:last-of-type) {
     margin-right: 10px;
   }
 
-  .info .states > *::before {
+  .states .state::before {
     content: '';
     display: inline-block;
     width: 5px;
@@ -72,19 +74,35 @@ export default css`
     margin-right: 5px;
   }
 
-  .info .states > .solved::before {
+  .states .state.solved::before {
     background-color: lightgreen;
   }
 
-  .info .states > .tried::before {
+  .states .state.tried::before {
     background-color: lightcoral;
   }
 
-  .info .states > .missed::before {
+  .states .state.missed::before {
     background-color: grey;
   }
 
-  .info .states > .submissions::before {
+  .states .state.submissions::before {
     background-color: yellow;
+  }
+
+  .state .note {
+    position: absolute;
+    top: 12px;
+    white-space: nowrap;
+    background: lightyellow;
+    padding: 3px;
+    transition: all 200ms;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .state:hover .note {
+    opacity: 1;
+    visibility: visible;
   }
 `;

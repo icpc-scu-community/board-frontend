@@ -42,9 +42,13 @@ export default css`
     transition: all 100ms;
   }
 
-  .list-item:hover {
-    background-color: #eee;
+  .list-item.even {
+    background-color: #f3f3f3;
   }
+
+  /* .list-item:hover {
+    background-color: #e0e0e0;
+  } */
 
   .trainee {
     display: flex;

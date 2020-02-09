@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import {
   sheetNameHeight,
   sheetProblemIdHeight,
@@ -11,7 +12,7 @@ import styles, { progressWidth } from './styles';
 
 class TraineeList extends React.Component {
   render() {
-    const { trainees } = this.props;
+    const { trainees, problemsCount } = this.props;
 
     return (
       <>
@@ -30,9 +31,9 @@ class TraineeList extends React.Component {
               paddingBottom: paddingBetweenRows
             }}
           >
-            {trainees.map(({ name, handle, states }) => (
+            {trainees.map(({ name, handle, states }, index) => (
               <div
-                className="list-item"
+                className={cn('list-item', { even: index % 2 })}
                 key={handle}
                 style={{
                   height: blockSize,
@@ -41,12 +42,26 @@ class TraineeList extends React.Component {
                 }}
               >
                 <div className="trainee">
-                  <Trainee name={name} handle={handle} states={states} />
+                  <Trainee
+                    name={name}
+                    handle={handle}
+                    states={states}
+                    problemsCount={problemsCount}
+                  />
                 </div>
                 <div className="progress">
-                  <div className="percentage">33%</div>
-                  <div className="counts">(46/999)</div>
-                  <div className="bar" style={{ width: '60%' }} />
+                  <div className="percentage">{`${Math.round(
+                    (states.solved / problemsCount) * 100
+                  )}%`}</div>
+                  <div className="counts">
+                    ({states.solved}/{problemsCount})
+                  </div>
+                  <div
+                    className="bar"
+                    style={{
+                      width: `${(states.solved / problemsCount) * 100}%`
+                    }}
+                  />
                 </div>
               </div>
             ))}
@@ -59,7 +74,8 @@ class TraineeList extends React.Component {
 }
 
 TraineeList.propTypes = {
-  trainees: PropTypes.array.isRequired
+  trainees: PropTypes.array.isRequired,
+  problemsCount: PropTypes.number.isRequired
 };
 
 export default TraineeList;

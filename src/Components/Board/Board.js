@@ -9,12 +9,16 @@ import styles from './styles';
 class Board extends React.Component {
   render() {
     const { sheets, trainees, submissions } = this.props;
+    const problemsCount = sheets.reduce(
+      (acc, { problems }) => acc + problems.length,
+      0
+    );
 
     return (
       <>
         <div className="board">
           <div className="trainees-section">
-            <TraineeList trainees={trainees} />
+            <TraineeList trainees={trainees} problemsCount={problemsCount} />
           </div>
           <div className="sheets-section">
             <div className="sheets">
