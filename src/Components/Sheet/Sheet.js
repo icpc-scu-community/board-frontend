@@ -31,10 +31,7 @@ class Sheet extends React.Component {
               >
                 <div className="id">{problem.id}</div>
                 <div className="status">(999/999)</div>
-                <div
-                  className="details"
-                  style={{ top: sheetProblemIdHeight - 5 }}
-                >
+                <div className="note" style={{ top: sheetProblemIdHeight - 5 }}>
                   {`${problem.id}. ${problem.name}`}
                 </div>
               </a>

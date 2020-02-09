@@ -1,5 +1,4 @@
 import css from 'styled-jsx/css';
-import { lightgrey, greyborders } from '../common';
 
 export default css`
   .sheet .title {
@@ -9,10 +8,16 @@ export default css`
     align-items: center;
     font-size: 14px;
     text-decoration: none;
-    color: ${greyborders};
-    border-bottom: 1px solid ${greyborders};
-    background-color: ${lightgrey};
+    color: #666;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background-color: #eee;
     box-sizing: border-box;
+    transition: all 100ms;
+  }
+
+  .sheet .title:hover {
+    background-color: #e0e0e0;
   }
 
   .sheet .problems {
@@ -27,7 +32,17 @@ export default css`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    background-color: ${lightgrey};
+    background-color: #eee;
+    color: #666;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-top: none;
+    box-sizing: border-box;
+    transition: all 100ms;
+  }
+
+  .sheet .problems .problem:hover {
+    background-color: #e0e0e0;
   }
 
   .sheet .problems .problem .status {
@@ -35,28 +50,20 @@ export default css`
     color: gray;
   }
 
-  .sheet .problems .problem .details {
+  .sheet .problems .problem .note {
     position: absolute;
     z-index: 10;
     white-space: nowrap;
     font-size: 10px;
-    background-color: lightyellow;
+    color: grey;
+    background: lightyellow;
     padding: 3px;
-    border: 1px solid darkgray;
     opacity: 0;
     transition: all 300ms;
     visibility: hidden;
   }
 
-  .sheet .problems .problem:first-child .details {
-    left: 0;
-  }
-
-  .sheet .problems .problem:last-child .details {
-    right: 0;
-  }
-
-  .sheet .problems .problem:hover .details {
+  .sheet .problems .problem:hover .note {
     opacity: 1;
     visibility: visible;
   }

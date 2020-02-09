@@ -21,8 +21,17 @@ class TraineeList extends React.Component {
             className="header"
             style={{ height: sheetNameHeight + sheetProblemIdHeight }}
           >
-            <div>Trainee</div>
-            <div style={{ width: progressWidth }}>Progress</div>
+            <div className="title">Newcomers Training Board</div>
+            <div className="last-update">
+              <span role="img" aria-label="">
+                🕐
+              </span>{' '}
+              Last update: 3 days ago
+            </div>
+            <div className="list-desc">
+              <div>Trainee</div>
+              <div style={{ width: progressWidth }}>Progress</div>
+            </div>
           </div>
           <div
             className="trainees"

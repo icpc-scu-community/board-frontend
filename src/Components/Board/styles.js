@@ -25,6 +25,14 @@ export default css`
     top: 0;
   }
 
+  :global(.sheets .sheet-collection:first-child .problem:first-child .note) {
+    left: 0;
+  }
+
+  :global(.sheets .sheet-collection:last-child .problem:last-child .note) {
+    right: 0;
+  }
+
   .sheets-section .trainee-problems-status {
     display: flex;
     flex-direction: column;

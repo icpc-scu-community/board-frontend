@@ -94,6 +94,7 @@ export default css`
     position: absolute;
     top: 12px;
     white-space: nowrap;
+    color: grey;
     background: lightyellow;
     padding: 3px;
     transition: all 200ms;
