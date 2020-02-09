@@ -1,4 +1,5 @@
 import css from 'styled-jsx/css';
+import { lightgrey, greyborders } from '../common';
 
 export default css`
   .sheet .title {
@@ -8,9 +9,9 @@ export default css`
     align-items: center;
     font-size: 14px;
     text-decoration: none;
-    color: #535353;
-    border-bottom: 1px solid #535353;
-    background-color: #e1e1e1;
+    color: ${greyborders};
+    border-bottom: 1px solid ${greyborders};
+    background-color: ${lightgrey};
     box-sizing: border-box;
   }
 
@@ -26,7 +27,7 @@ export default css`
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    background-color: #e1e1e1;
+    background-color: ${lightgrey};
   }
 
   .sheet .problems .problem .status {

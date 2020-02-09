@@ -1,13 +1,16 @@
 import css from 'styled-jsx/css';
+import { lightgrey, greyborders } from '../common';
 
 export const progressWidth = 75;
+const listItemPadding = 10;
 
 export default css`
   .trainee-list {
     display: flex;
     flex-direction: column;
     background: white;
-    padding: 0 10px;
+    box-sizing: border-box;
+    border-right: 1px solid ${greyborders};
   }
 
   .trainee-list .header {
@@ -22,6 +25,12 @@ export default css`
     position: sticky;
     top: 0;
     z-index: 10;
+    padding: 0 ${listItemPadding}px;
+    background: ${lightgrey};
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    border-bottom: 1px solid ${greyborders};
+    color: ${greyborders};
   }
 
   .list-item {
@@ -29,6 +38,12 @@ export default css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0 ${listItemPadding}px;
+    transition: all 100ms;
+  }
+
+  .list-item:hover {
+    background-color: #eee;
   }
 
   .trainee {
@@ -45,7 +60,7 @@ export default css`
     justify-content: center;
     font-size: 14px;
     width: ${progressWidth}px;
-    height: 75%;
+    height: 70%;
     z-index: 0;
     background-color: lightgray;
     border: 1px solid green;

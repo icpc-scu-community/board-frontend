@@ -10,8 +10,8 @@ export default css`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     margin-right: 10px;
     border-radius: 5px;
     user-select: none;
