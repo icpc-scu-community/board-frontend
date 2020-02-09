@@ -15,9 +15,15 @@ export default css`
     position: sticky;
     left: 0;
     z-index: 1;
+    width: 330px;
   }
 
   /* sheets */
+  .sheets-section {
+    position: absolute;
+    left: 330px;
+  }
+
   .sheets-section .sheets {
     display: flex;
     flex-direction: row;
@@ -41,7 +47,7 @@ export default css`
   .trainee-problems-status .trainee-problems-row {
     display: flex;
     flex-direction: row;
-    transition: all 00ms;
+    transition: all 100ms;
   }
 
   .trainee-problems-status .trainee-problems-row.ignore {

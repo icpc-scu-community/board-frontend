@@ -5,6 +5,7 @@ export const getShortName = name => {
     .trim()
     .split(' ')
     .reduce((acc, name) => (name.length ? `${acc}${name[0]}` : acc), '')
+    .substr(0, 4)
     .toUpperCase();
 };
 

@@ -14,6 +14,7 @@ export default css`
     height: 42px;
     margin-right: 10px;
     border-radius: 5px;
+    font-size: 14px;
     user-select: none;
   }
 
@@ -25,7 +26,10 @@ export default css`
 
   .info .name {
     font-size: 14px;
+    max-width: 170px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .info .handle {
