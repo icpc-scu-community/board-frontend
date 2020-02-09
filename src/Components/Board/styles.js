@@ -18,24 +18,33 @@ export default css`
   }
 
   /* sheets */
-  .board .sheets-section .sheets {
+  .sheets-section .sheets {
     display: flex;
     flex-direction: row;
     position: sticky;
     top: 0;
   }
 
-  .board .sheets-section .trainee-problems-status {
+  .sheets-section .trainee-problems-status {
     display: flex;
     flex-direction: column;
   }
 
-  .board .sheets-section .trainee-problems-status .trainee-problems-row {
+  .trainee-problems-status .trainee-problems-row {
     display: flex;
     flex-direction: row;
+    transition: all 00ms;
   }
 
-  .board .sheets-section .trainee-problems-status .trainee-problems-cell {
+  .trainee-problems-status .trainee-problems-row.ignore {
+    opacity: 0.5;
+  }
+
+  .trainee-problems-status .trainee-problems-row.focus {
+    background-color: #e0e0e0;
+  }
+
+  .trainee-problems-status .trainee-problems-cell {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,30 +55,21 @@ export default css`
     box-sizing: border-box;
   }
 
-  .board
-    .sheets-section
-    .trainee-problems-status
-    .trainee-problems-cell:first-of-type {
+  .trainee-problems-status .trainee-problems-cell:first-of-type {
     border-left: 1px solid;
   }
 
-  .board .sheets-section .trainee-problems-status .trainee-problems-cell.ac {
+  .trainee-problems-status .trainee-problems-cell.ac {
     background-color: lightgreen;
     border-color: green;
   }
 
-  .board
-    .sheets-section
-    .trainee-problems-status
-    .trainee-problems-cell.not-ac {
+  .trainee-problems-status .trainee-problems-cell.not-ac {
     background-color: orangered;
     border-color: blue;
   }
 
-  .board
-    .sheets-section
-    .trainee-problems-status
-    .trainee-problems-cell.not-solved {
+  .trainee-problems-status .trainee-problems-cell.not-solved {
     background-color: lightgrey;
     border-color: grey;
   }

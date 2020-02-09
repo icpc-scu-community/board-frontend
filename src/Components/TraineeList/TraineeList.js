@@ -12,7 +12,7 @@ import styles, { progressWidth } from './styles';
 
 class TraineeList extends React.Component {
   render() {
-    const { trainees, problemsCount } = this.props;
+    const { trainees, problemsCount, onTraineeHover } = this.props;
 
     return (
       <>
@@ -40,28 +40,32 @@ class TraineeList extends React.Component {
                   paddingTop: paddingBetweenRows,
                   paddingBottom: paddingBetweenRows
                 }}
+                onMouseEnter={() => onTraineeHover(index)}
+                onMouseLeave={() => onTraineeHover(-1)}
               >
-                <div className="trainee">
-                  <Trainee
-                    name={name}
-                    handle={handle}
-                    states={states}
-                    problemsCount={problemsCount}
-                  />
-                </div>
-                <div className="progress">
-                  <div className="percentage">{`${Math.round(
-                    (states.solved / problemsCount) * 100
-                  )}%`}</div>
-                  <div className="counts">
-                    ({states.solved}/{problemsCount})
+                <div className="list-item-content">
+                  <div className="trainee">
+                    <Trainee
+                      name={name}
+                      handle={handle}
+                      states={states}
+                      problemsCount={problemsCount}
+                    />
                   </div>
-                  <div
-                    className="bar"
-                    style={{
-                      width: `${(states.solved / problemsCount) * 100}%`
-                    }}
-                  />
+                  <div className="progress">
+                    <div className="percentage">{`${Math.round(
+                      (states.solved / problemsCount) * 100
+                    )}%`}</div>
+                    <div className="counts">
+                      ({states.solved}/{problemsCount})
+                    </div>
+                    <div
+                      className="bar"
+                      style={{
+                        width: `${(states.solved / problemsCount) * 100}%`
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             ))}
@@ -75,7 +79,8 @@ class TraineeList extends React.Component {
 
 TraineeList.propTypes = {
   trainees: PropTypes.array.isRequired,
-  problemsCount: PropTypes.number.isRequired
+  problemsCount: PropTypes.number.isRequired,
+  onTraineeHover: PropTypes.func.isRequired
 };
 
 export default TraineeList;

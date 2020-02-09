@@ -33,22 +33,23 @@ export default css`
     color: ${greyborders};
   }
 
-  .list-item {
+  .list-item .list-item-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 ${listItemPadding}px;
     transition: all 100ms;
+    padding: 0 ${listItemPadding}px;
+    height: 100%;
   }
 
-  .list-item.even {
+  .list-item.even .list-item-content {
     background-color: #f3f3f3;
   }
 
-  /* .list-item:hover {
+  .list-item:hover .list-item-content {
     background-color: #e0e0e0;
-  } */
+  }
 
   .trainee {
     display: flex;

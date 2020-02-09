@@ -7,8 +7,14 @@ import Sheet from '../Sheet';
 import styles from './styles';
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hoveredTraineeIndex: -1 };
+  }
+
   render() {
     const { sheets, trainees, submissions } = this.props;
+    const { hoveredTraineeIndex } = this.state;
     const problemsCount = sheets.reduce(
       (acc, { problems }) => acc + problems.length,
       0
@@ -18,7 +24,13 @@ class Board extends React.Component {
       <>
         <div className="board">
           <div className="trainees-section">
-            <TraineeList trainees={trainees} problemsCount={problemsCount} />
+            <TraineeList
+              trainees={trainees}
+              problemsCount={problemsCount}
+              onTraineeHover={index =>
+                this.setState({ hoveredTraineeIndex: index })
+              }
+            />
           </div>
           <div className="sheets-section">
             <div className="sheets">
@@ -38,7 +50,11 @@ class Board extends React.Component {
               {trainees.map(({ handle }, index) => (
                 <div
                   key={index}
-                  className="trainee-problems-row"
+                  className={cn('trainee-problems-row', {
+                    ignore:
+                      hoveredTraineeIndex !== -1 &&
+                      hoveredTraineeIndex !== index
+                  })}
                   style={{
                     paddingTop: paddingBetweenRows,
                     paddingBottom: paddingBetweenRows
