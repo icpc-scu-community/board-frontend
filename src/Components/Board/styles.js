@@ -14,7 +14,7 @@ export default css`
   .board .trainees-section {
     position: sticky;
     left: 0;
-    z-index: 2;
+    z-index: 3;
     width: 330px;
   }
 
@@ -29,7 +29,7 @@ export default css`
     flex-direction: row;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
   }
 
   :global(.sheets .sheet-collection:first-child .problem:first-child .note) {
@@ -52,39 +52,5 @@ export default css`
 
   .trainee-problems-status .trainee-problems-row.focus {
     background-color: #e0e0e0;
-  }
-
-  .trainee-problems-status .trainee-problems-cell {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid;
-    border-right: 1px solid;
-    border-bottom: 1px solid;
-    box-sizing: border-box;
-  }
-
-  .trainee-problems-status .trainee-problems-cell:first-of-type {
-    border-left: 1px solid;
-  }
-
-  .trainee-problems-status .trainee-problems-cell.ignore {
-    opacity: 0.4;
-  }
-
-  .trainee-problems-status .trainee-problems-cell.ac {
-    background-color: lightgreen;
-    border-color: green;
-  }
-
-  .trainee-problems-status .trainee-problems-cell.not-ac {
-    background-color: orangered;
-    border-color: blue;
-  }
-
-  .trainee-problems-status .trainee-problems-cell.not-solved {
-    background-color: lightgrey;
-    border-color: grey;
   }
 `;

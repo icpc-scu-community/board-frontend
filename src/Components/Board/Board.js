@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
-import { blockSize, paddingBetweenRows } from '../common';
-import { TraineeList } from '../TraineeList';
+import { paddingBetweenRows } from '../common';
+import TraineeList from '../TraineeList';
+import BoardCell from '../BoardCell';
 import Sheet from '../Sheet';
 import styles from './styles';
 
@@ -38,9 +38,8 @@ class Board extends React.Component {
               trainees={trainees}
               problemsCount={problemsCount}
               hoveredTraineeIndex={hoveredTraineeIndex}
-              onTraineeHover={index =>
-                this.setState({ hoveredTraineeIndex: index })
-              }
+              onTraineeHover={() => ({})}
+              // index => this.setState({ hoveredTraineeIndex: index })
             />
           </div>
           <div className="sheets-section">
@@ -54,12 +53,10 @@ class Board extends React.Component {
                     traineesCount={traineesCount}
                     hovered={hoveredSheetIndex === sheetIndex}
                     hoveredProblemIndex={hoveredProblemIndex}
-                    onSheetHover={index =>
-                      this.setState({ hoveredSheetIndex: index || sheetIndex })
-                    }
-                    onProblemHover={index =>
-                      this.setState({ hoveredProblemIndex: index })
-                    }
+                    onSheetHover={() => ({})}
+                    // index => this.setState({ hoveredSheetIndex: index || sheetIndex })
+                    onProblemHover={() => ({})}
+                    // index => this.setState({ hoveredProblemIndex: index })
                   />
                 </div>
               ))}
@@ -86,50 +83,40 @@ class Board extends React.Component {
                         (submissions[handle] &&
                           submissions[handle][`${sheetId}-${problemId}`]) ||
                         {};
+                      const ignored = !(
+                        (hoveredTraineeIndex === -1 &&
+                          hoveredSheetIndex === -1 &&
+                          hoveredProblemIndex === -1) ||
+                        hoveredTraineeIndex === TraineeIndex ||
+                        (hoveredProblemIndex === -1 &&
+                          hoveredSheetIndex === sheetIndex) ||
+                        (hoveredProblemIndex === problemIndex &&
+                          hoveredSheetIndex === sheetIndex)
+                      );
 
                       return (
                         <div
                           key={`${sheetId}-${problemId}`}
-                          className={cn('trainee-problems-cell', {
-                            ac: submission.verdict === 'AC',
-                            'not-ac': submission.verdict !== 'AC',
-                            'not-solved': submission.verdict === undefined,
-                            ignore: !(
-                              (hoveredTraineeIndex === -1 &&
-                                hoveredProblemIndex === -1 &&
-                                hoveredSheetIndex === -1) ||
-                              hoveredTraineeIndex === TraineeIndex ||
-                              (hoveredSheetIndex === sheetIndex &&
-                                hoveredProblemIndex === -1) ||
-                              (hoveredProblemIndex === problemIndex &&
-                                hoveredSheetIndex === sheetIndex)
-                            )
-                          })}
-                          style={{ width: blockSize, height: blockSize }}
-                          onMouseEnter={() =>
-                            this.setState({
-                              hoveredTraineeIndex: TraineeIndex,
-                              hoveredSheetIndex: sheetIndex,
-                              hoveredProblemIndex: problemIndex
-                            })
-                          }
-                          onMouseLeave={() =>
-                            this.setState({
-                              hoveredTraineeIndex: -1,
-                              hoveredSheetIndex: -1,
-                              hoveredProblemIndex: -1
-                            })
-                          }
+                          // onMouseEnter={() =>
+                          //   this.setState({
+                          //     hoveredTraineeIndex: TraineeIndex,
+                          //     hoveredSheetIndex: sheetIndex,
+                          //     hoveredProblemIndex: problemIndex
+                          //   })
+                          // }
+                          // onMouseLeave={() =>
+                          //   this.setState({
+                          //     hoveredTraineeIndex: -1,
+                          //     hoveredSheetIndex: -1,
+                          //     hoveredProblemIndex: -1
+                          //   })
+                          // }
                         >
-                          {submission.verdict ? (
-                            <>
-                              <div>{submission.verdict}</div>
-                              <div>+10</div>
-                              {/* <div className="list"></div> */}
-                            </>
-                          ) : (
-                            <div>?</div>
-                          )}
+                          <BoardCell
+                            sheetId={sheetId}
+                            submission={submission}
+                            ignored={ignored}
+                          />
                         </div>
                       );
                     })

@@ -61,7 +61,11 @@ export default css`
     background-color: #f3f3f3;
   }
 
-  .list-item.hovered .list-item-content {
+  /* .list-item.hovered .list-item-content {
+    background-color: #e0e0e0;
+  } */
+
+  .list-item:hover .list-item-content {
     background-color: #e0e0e0;
   }
 

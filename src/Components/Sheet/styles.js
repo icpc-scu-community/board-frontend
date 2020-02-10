@@ -16,8 +16,16 @@ export default css`
     transition: all 100ms;
   }
 
-  .sheet .title.hovered {
+  /* .sheet .title.hovered {
     background-color: #e0e0e0;
+  } */
+
+  .sheet .title:hover {
+    background-color: #e0e0e0;
+  }
+
+  .sheet .title:active {
+    background-color: #d3d3d3;
   }
 
   .sheet .problems {
@@ -41,8 +49,16 @@ export default css`
     transition: all 100ms;
   }
 
-  .sheet .problems .problem.hovered {
+  /* .sheet .problems .problem.hovered {
     background-color: #e0e0e0;
+  } */
+
+  .sheet .problems .problem:hover {
+    background-color: #e0e0e0;
+  }
+
+  .sheet .problems .problem:active {
+    background-color: #d3d3d3;
   }
 
   .sheet .problems .problem .status {

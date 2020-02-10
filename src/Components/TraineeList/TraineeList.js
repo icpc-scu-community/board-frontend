@@ -51,7 +51,7 @@ class TraineeList extends React.Component {
                   even: index % 2,
                   hovered: hoveredTraineeIndex === index
                 })}
-                key={handle}
+                key={index}
                 style={{
                   height: blockSize,
                   paddingTop: paddingBetweenRows,
