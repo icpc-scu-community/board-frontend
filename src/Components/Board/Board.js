@@ -9,12 +9,20 @@ import styles from './styles';
 class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hoveredTraineeIndex: -1 };
+    this.state = {
+      hoveredTraineeIndex: -1,
+      hoveredProblemIndex: -1,
+      hoveredSheetIndex: -1
+    };
   }
 
   render() {
     const { sheets, trainees, submissions } = this.props;
-    const { hoveredTraineeIndex } = this.state;
+    const {
+      hoveredTraineeIndex,
+      hoveredProblemIndex,
+      hoveredSheetIndex
+    } = this.state;
     const problemsCount = sheets.reduce(
       (acc, { problems }) => acc + problems.length,
       0
@@ -27,6 +35,7 @@ class Board extends React.Component {
             <TraineeList
               trainees={trainees}
               problemsCount={problemsCount}
+              hoveredTraineeIndex={hoveredTraineeIndex}
               onTraineeHover={index =>
                 this.setState({ hoveredTraineeIndex: index })
               }
@@ -34,9 +43,21 @@ class Board extends React.Component {
           </div>
           <div className="sheets-section">
             <div className="sheets">
-              {sheets.map(({ id, name, problems }, index) => (
-                <div className="sheet-collection" key={index}>
-                  <Sheet id={id} name={name} problems={problems} />
+              {sheets.map(({ id, name, problems }, sheetIndex) => (
+                <div className="sheet-collection" key={sheetIndex}>
+                  <Sheet
+                    id={id}
+                    name={name}
+                    problems={problems}
+                    hovered={hoveredSheetIndex === sheetIndex}
+                    hoveredProblemIndex={hoveredProblemIndex}
+                    onSheetHover={index =>
+                      this.setState({ hoveredSheetIndex: index || sheetIndex })
+                    }
+                    onProblemHover={index =>
+                      this.setState({ hoveredProblemIndex: index })
+                    }
+                  />
                 </div>
               ))}
             </div>
@@ -47,21 +68,17 @@ class Board extends React.Component {
                 paddingBottom: paddingBetweenRows
               }}
             >
-              {trainees.map(({ handle }, index) => (
+              {trainees.map(({ handle }, TraineeIndex) => (
                 <div
-                  key={index}
-                  className={cn('trainee-problems-row', {
-                    ignore:
-                      hoveredTraineeIndex !== -1 &&
-                      hoveredTraineeIndex !== index
-                  })}
+                  key={TraineeIndex}
+                  className="trainee-problems-row"
                   style={{
                     paddingTop: paddingBetweenRows,
                     paddingBottom: paddingBetweenRows
                   }}
                 >
-                  {sheets.map(({ id: sheetId, problems }) =>
-                    problems.map(({ id: problemId }) => {
+                  {sheets.map(({ id: sheetId, problems }, sheetIndex) =>
+                    problems.map(({ id: problemId }, problemIndex) => {
                       const submission =
                         (submissions[handle] &&
                           submissions[handle][`${sheetId}-${problemId}`]) ||
@@ -73,9 +90,33 @@ class Board extends React.Component {
                           className={cn('trainee-problems-cell', {
                             ac: submission.verdict === 'AC',
                             'not-ac': submission.verdict !== 'AC',
-                            'not-solved': submission.verdict === undefined
+                            'not-solved': submission.verdict === undefined,
+                            ignore: !(
+                              (hoveredTraineeIndex === -1 &&
+                                hoveredProblemIndex === -1 &&
+                                hoveredSheetIndex === -1) ||
+                              hoveredTraineeIndex === TraineeIndex ||
+                              (hoveredSheetIndex === sheetIndex &&
+                                hoveredProblemIndex === -1) ||
+                              (hoveredProblemIndex === problemIndex &&
+                                hoveredSheetIndex === sheetIndex)
+                            )
                           })}
                           style={{ width: blockSize, height: blockSize }}
+                          onMouseEnter={() =>
+                            this.setState({
+                              hoveredTraineeIndex: TraineeIndex,
+                              hoveredSheetIndex: sheetIndex,
+                              hoveredProblemIndex: problemIndex
+                            })
+                          }
+                          onMouseLeave={() =>
+                            this.setState({
+                              hoveredTraineeIndex: -1,
+                              hoveredSheetIndex: -1,
+                              hoveredProblemIndex: -1
+                            })
+                          }
                         >
                           {submission.verdict ? (
                             <>

@@ -12,7 +12,12 @@ import styles, { progressWidth } from './styles';
 
 class TraineeList extends React.Component {
   render() {
-    const { trainees, problemsCount, onTraineeHover } = this.props;
+    const {
+      trainees,
+      problemsCount,
+      hoveredTraineeIndex,
+      onTraineeHover
+    } = this.props;
 
     return (
       <>
@@ -42,7 +47,10 @@ class TraineeList extends React.Component {
           >
             {trainees.map(({ name, handle, states }, index) => (
               <div
-                className={cn('list-item', { even: index % 2 })}
+                className={cn('list-item', {
+                  even: index % 2,
+                  hovered: hoveredTraineeIndex === index
+                })}
                 key={handle}
                 style={{
                   height: blockSize,
@@ -89,6 +97,7 @@ class TraineeList extends React.Component {
 TraineeList.propTypes = {
   trainees: PropTypes.array.isRequired,
   problemsCount: PropTypes.number.isRequired,
+  hoveredTraineeIndex: PropTypes.number.isRequired,
   onTraineeHover: PropTypes.func.isRequired
 };
 

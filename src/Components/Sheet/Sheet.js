@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import { sheetNameHeight, blockSize, sheetProblemIdHeight } from '../common';
 import styles from './styles';
 
 class Sheet extends React.Component {
   render() {
-    const { id, name, problems } = this.props;
+    const {
+      id,
+      name,
+      problems,
+      hovered,
+      hoveredProblemIndex,
+      onSheetHover,
+      onProblemHover
+    } = this.props;
 
     return (
       <>
@@ -14,8 +23,10 @@ class Sheet extends React.Component {
             href={`https://codeforces.com/group/MWSDmqGsZm/contest/${id}`}
             rel="noopener noreferrer"
             target="_blank"
-            className="title"
+            className={cn('title', { hovered })}
             style={{ height: sheetNameHeight }}
+            onMouseEnter={() => onSheetHover()}
+            onMouseLeave={() => onSheetHover(-1)}
           >
             {name}
           </a>
@@ -26,8 +37,18 @@ class Sheet extends React.Component {
                 href={`https://codeforces.com/group/MWSDmqGsZm/contest/${id}/problem/${problem.id}`}
                 rel="noopener noreferrer"
                 target="_blank"
-                className="problem"
+                className={cn('problem', {
+                  hovered: hovered && hoveredProblemIndex === index
+                })}
                 style={{ width: blockSize, height: sheetProblemIdHeight }}
+                onMouseEnter={() => {
+                  onProblemHover(index);
+                  onSheetHover();
+                }}
+                onMouseLeave={() => {
+                  onProblemHover(-1);
+                  onSheetHover(-1);
+                }}
               >
                 <div className="id">{problem.id}</div>
                 <div className="status">(999/999)</div>
@@ -52,7 +73,11 @@ Sheet.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  hovered: PropTypes.bool.isRequired,
+  hoveredProblemIndex: PropTypes.number.isRequired,
+  onSheetHover: PropTypes.func.isRequired,
+  onProblemHover: PropTypes.func.isRequired
 };
 
 export default Sheet;

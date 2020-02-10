@@ -16,7 +16,7 @@ export default css`
     transition: all 100ms;
   }
 
-  .sheet .title:hover {
+  .sheet .title.hovered {
     background-color: #e0e0e0;
   }
 
@@ -41,7 +41,7 @@ export default css`
     transition: all 100ms;
   }
 
-  .sheet .problems .problem:hover {
+  .sheet .problems .problem.hovered {
     background-color: #e0e0e0;
   }
 

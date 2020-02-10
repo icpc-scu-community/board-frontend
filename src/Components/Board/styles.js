@@ -14,7 +14,7 @@ export default css`
   .board .trainees-section {
     position: sticky;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     width: 330px;
   }
 
@@ -29,6 +29,7 @@ export default css`
     flex-direction: row;
     position: sticky;
     top: 0;
+    z-index: 1;
   }
 
   :global(.sheets .sheet-collection:first-child .problem:first-child .note) {
@@ -47,11 +48,6 @@ export default css`
   .trainee-problems-status .trainee-problems-row {
     display: flex;
     flex-direction: row;
-    transition: all 100ms;
-  }
-
-  .trainee-problems-status .trainee-problems-row.ignore {
-    opacity: 0.5;
   }
 
   .trainee-problems-status .trainee-problems-row.focus {
@@ -71,6 +67,10 @@ export default css`
 
   .trainee-problems-status .trainee-problems-cell:first-of-type {
     border-left: 1px solid;
+  }
+
+  .trainee-problems-status .trainee-problems-cell.ignore {
+    opacity: 0.4;
   }
 
   .trainee-problems-status .trainee-problems-cell.ac {
