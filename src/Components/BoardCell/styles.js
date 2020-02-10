@@ -45,6 +45,8 @@ export default css`
     opacity: 0;
     visibility: hidden;
     transition: all 200ms;
+    max-height: 101px;
+    overflow-y: auto;
   }
 
   .board-cell:hover .list {

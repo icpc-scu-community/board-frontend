@@ -6,7 +6,7 @@ import styles from './styles';
 
 class BoardCell extends React.Component {
   render() {
-    const { sheetId, submission, ignored } = this.props;
+    const { sheetId, submission, ignored, right, bottom } = this.props;
     const { verdict, triesBeforeAC, list } = submission;
 
     return (
@@ -26,7 +26,10 @@ class BoardCell extends React.Component {
               <div>{triesBeforeAC ? `+${triesBeforeAC}` : ''}</div>
               <div
                 className="list"
-                style={{ left: blockSize / 2, top: blockSize * (2 / 3) }}
+                style={{
+                  [right ? 'right' : 'left']: blockSize / 2 - 15,
+                  [bottom ? 'bottom' : 'top']: blockSize / 2 + 15
+                }}
               >
                 {list.map(
                   (
@@ -66,7 +69,9 @@ class BoardCell extends React.Component {
 BoardCell.propTypes = {
   sheetId: PropTypes.string.isRequired,
   submission: PropTypes.object.isRequired,
-  ignored: PropTypes.bool.isRequired
+  ignored: PropTypes.bool.isRequired,
+  right: PropTypes.bool.isRequired,
+  bottom: PropTypes.bool.isRequired
 };
 
 export default BoardCell;

@@ -104,4 +104,9 @@ export default css`
     background-color: lightgreen;
     z-index: -1;
   }
+
+  :global(.list-item:last-child .note) {
+    top: auto !important;
+    bottom: 10px;
+  }
 `;

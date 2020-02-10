@@ -1,5 +1,6 @@
 import css from 'styled-jsx/css';
 import { footerHeight } from '../Footer';
+const traineesListWidth = 330;
 
 export default css`
   .board {
@@ -16,13 +17,13 @@ export default css`
     position: sticky;
     left: 0;
     z-index: 3;
-    width: 330px;
+    width: ${traineesListWidth}px;
   }
 
   /* sheets */
   .sheets-section {
     position: absolute;
-    left: 330px;
+    left: ${traineesListWidth}px;
   }
 
   .sheets-section .sheets {

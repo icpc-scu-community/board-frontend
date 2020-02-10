@@ -173,9 +173,14 @@ const App = () => {
         list: [
           {
             id: '70693734',
-            message: 'Time limit exceeded on test 9',
+            message: 'Memory limit exceeded on test 999',
             verdict: 'TLE'
           },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
           { id: '70694112', message: 'Accepted', verdict: 'AC' }
         ]
       },
@@ -210,6 +215,23 @@ const App = () => {
         verdict: 'AC',
         triesBeforeAC: 0,
         list: [{ id: '70694112', message: 'Accepted', verdict: 'AC' }]
+      },
+      'fake-2-E': {
+        verdict: 'AC',
+        triesBeforeAC: 1,
+        list: [
+          {
+            id: '70693734',
+            message: 'Memory limit exceeded on test 999',
+            verdict: 'TLE'
+          },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' },
+          { id: '70694112', message: 'Accepted', verdict: 'AC' }
+        ]
       }
     }
   };

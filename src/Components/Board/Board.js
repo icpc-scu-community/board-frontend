@@ -68,61 +68,77 @@ class Board extends React.Component {
                 paddingBottom: paddingBetweenRows
               }}
             >
-              {trainees.map(({ handle }, TraineeIndex) => (
-                <div
-                  key={TraineeIndex}
-                  className="trainee-problems-row"
-                  style={{
-                    paddingTop: paddingBetweenRows,
-                    paddingBottom: paddingBetweenRows
-                  }}
-                >
-                  {sheets.map(({ id: sheetId, problems }, sheetIndex) =>
-                    problems.map(({ id: problemId }, problemIndex) => {
-                      const submission =
-                        (submissions[handle] &&
-                          submissions[handle][`${sheetId}-${problemId}`]) ||
-                        {};
-                      const ignored = !(
-                        (hoveredTraineeIndex === -1 &&
-                          hoveredSheetIndex === -1 &&
-                          hoveredProblemIndex === -1) ||
-                        hoveredTraineeIndex === TraineeIndex ||
-                        (hoveredProblemIndex === -1 &&
-                          hoveredSheetIndex === sheetIndex) ||
-                        (hoveredProblemIndex === problemIndex &&
-                          hoveredSheetIndex === sheetIndex)
-                      );
+              {trainees.map(({ handle }, traineeIndex) => {
+                let remainingProblems = problemsCount + 1;
+                let problemsI = 0;
 
-                      return (
-                        <div
-                          key={`${sheetId}-${problemId}`}
-                          // onMouseEnter={() =>
-                          //   this.setState({
-                          //     hoveredTraineeIndex: TraineeIndex,
-                          //     hoveredSheetIndex: sheetIndex,
-                          //     hoveredProblemIndex: problemIndex
-                          //   })
-                          // }
-                          // onMouseLeave={() =>
-                          //   this.setState({
-                          //     hoveredTraineeIndex: -1,
-                          //     hoveredSheetIndex: -1,
-                          //     hoveredProblemIndex: -1
-                          //   })
-                          // }
-                        >
-                          <BoardCell
-                            sheetId={sheetId}
-                            submission={submission}
-                            ignored={ignored}
-                          />
-                        </div>
-                      );
-                    })
-                  )}
-                </div>
-              ))}
+                let remainingTrainees = traineesCount - traineeIndex + 1;
+                let traineesI = traineeIndex;
+
+                remainingTrainees--;
+                traineesI++;
+
+                return (
+                  <div
+                    key={traineeIndex}
+                    className="trainee-problems-row"
+                    style={{
+                      paddingTop: paddingBetweenRows,
+                      paddingBottom: paddingBetweenRows
+                    }}
+                  >
+                    {sheets.map(({ id: sheetId, problems }, sheetIndex) =>
+                      problems.map(({ id: problemId }, problemIndex) => {
+                        remainingProblems--;
+                        problemsI++;
+
+                        const submission =
+                          (submissions[handle] &&
+                            submissions[handle][`${sheetId}-${problemId}`]) ||
+                          {};
+                        const ignored = !(
+                          (hoveredTraineeIndex === -1 &&
+                            hoveredSheetIndex === -1 &&
+                            hoveredProblemIndex === -1) ||
+                          hoveredTraineeIndex === traineeIndex ||
+                          (hoveredProblemIndex === -1 &&
+                            hoveredSheetIndex === sheetIndex) ||
+                          (hoveredProblemIndex === problemIndex &&
+                            hoveredSheetIndex === sheetIndex)
+                        );
+
+                        return (
+                          <div
+                            key={`${sheetId}-${problemId}`}
+                            // onMouseEnter={() =>
+                            //   this.setState({
+                            //     hoveredTraineeIndex: TraineeIndex,
+                            //     hoveredSheetIndex: sheetIndex,
+                            //     hoveredProblemIndex: problemIndex
+                            //   })
+                            // }
+                            // onMouseLeave={() =>
+                            //   this.setState({
+                            //     hoveredTraineeIndex: -1,
+                            //     hoveredSheetIndex: -1,
+                            //     hoveredProblemIndex: -1
+                            //   })
+                            // }
+                          >
+                            <BoardCell
+                              sheetId={sheetId}
+                              submission={submission}
+                              ignored={ignored}
+                              right={remainingProblems <= 5 && problemsI > 5}
+                              bottom={remainingTrainees <= 2 && traineesI > 2}
+                            />
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
