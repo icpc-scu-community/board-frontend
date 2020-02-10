@@ -10,6 +10,7 @@ class Sheet extends React.Component {
       id,
       name,
       problems,
+      traineesCount,
       hovered,
       hoveredProblemIndex,
       onSheetHover,
@@ -51,7 +52,7 @@ class Sheet extends React.Component {
                 }}
               >
                 <div className="id">{problem.id}</div>
-                <div className="status">(999/999)</div>
+                <div className="status">{`(${problem.solved}/${traineesCount})`}</div>
                 <div className="note" style={{ top: sheetProblemIdHeight - 5 }}>
                   {`${problem.id}. ${problem.name}`}
                 </div>
@@ -71,9 +72,11 @@ Sheet.propTypes = {
   problems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      solved: PropTypes.number.isRequired
     })
   ).isRequired,
+  traineesCount: PropTypes.number.isRequired,
   hovered: PropTypes.bool.isRequired,
   hoveredProblemIndex: PropTypes.number.isRequired,
   onSheetHover: PropTypes.func.isRequired,

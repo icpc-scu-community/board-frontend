@@ -111,33 +111,33 @@ const App = () => {
       id: '219158',
       name: 'Sheet #1 (Data type - Conditions)',
       problems: [
-        { id: 'A', name: 'Say Hello With C++' },
-        { id: 'B', name: 'Basic Data Types' },
-        { id: 'C', name: 'Extremely Basic' },
-        { id: 'D', name: 'Difference' },
-        { id: 'E', name: 'Four Numbers' }
+        { id: 'A', name: 'Say Hello With C++', solved: 15 },
+        { id: 'B', name: 'Basic Data Types', solved: 15 },
+        { id: 'C', name: 'Extremely Basic', solved: 15 },
+        { id: 'D', name: 'Difference', solved: 15 },
+        { id: 'E', name: 'Four Numbers', solved: 15 }
       ]
     },
     {
       id: '219432',
       name: 'Sheet #2 (Loops)',
       problems: [
-        { id: 'A', name: '1 to N' },
-        { id: 'B', name: 'Even Numbers' },
-        { id: 'C', name: 'Summation using Loops' },
-        { id: 'D', name: 'Even, Odd, Positive and Negative' },
-        { id: 'E', name: 'Fixed Password' }
+        { id: 'A', name: '1 to N', solved: 15 },
+        { id: 'B', name: 'Even Numbers', solved: 15 },
+        { id: 'C', name: 'Summation using Loops', solved: 15 },
+        { id: 'D', name: 'Even, Odd, Positive and Negative', solved: 15 },
+        { id: 'E', name: 'Fixed Password', solved: 15 }
       ]
     },
     {
       id: '219856',
       name: 'Sheet #4 (Strings)',
       problems: [
-        { id: 'A', name: 'Create A New String' },
-        { id: 'B', name: 'Find Length' },
-        { id: 'C', name: "Let's use Getline" },
-        { id: 'D', name: 'Compare' },
-        { id: 'E', name: 'Strings' }
+        { id: 'A', name: 'Create A New String', solved: 15 },
+        { id: 'B', name: 'Find Length', solved: 15 },
+        { id: 'C', name: "Let's use Getline", solved: 15 },
+        { id: 'D', name: 'Compare', solved: 15 },
+        { id: 'E', name: 'Strings', solved: 15 }
       ]
     },
 
@@ -145,22 +145,22 @@ const App = () => {
       id: 'fake-1',
       name: 'Sheet #4 (Strings)',
       problems: [
-        { id: 'A', name: 'Create A New String' },
-        { id: 'B', name: 'Find Length' },
-        { id: 'C', name: "Let's use Getline" },
-        { id: 'D', name: 'Compare' },
-        { id: 'E', name: 'Strings' }
+        { id: 'A', name: 'Create A New String', solved: 15 },
+        { id: 'B', name: 'Find Length', solved: 15 },
+        { id: 'C', name: "Let's use Getline", solved: 15 },
+        { id: 'D', name: 'Compare', solved: 15 },
+        { id: 'E', name: 'Strings', solved: 15 }
       ]
     },
     {
       id: 'fake-2',
       name: 'Sheet #4 (Strings)',
       problems: [
-        { id: 'A', name: 'Create A New String' },
-        { id: 'B', name: 'Find Length' },
-        { id: 'C', name: "Let's use Getline" },
-        { id: 'D', name: 'Compare' },
-        { id: 'E', name: 'Strings Strings Strings' }
+        { id: 'A', name: 'Create A New String', solved: 15 },
+        { id: 'B', name: 'Find Length', solved: 15 },
+        { id: 'C', name: "Let's use Getline", solved: 15 },
+        { id: 'D', name: 'Compare', solved: 15 },
+        { id: 'E', name: 'Strings Strings Strings', solved: 15 }
       ]
     }
   ];

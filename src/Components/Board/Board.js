@@ -23,6 +23,8 @@ class Board extends React.Component {
       hoveredProblemIndex,
       hoveredSheetIndex
     } = this.state;
+
+    const traineesCount = trainees.length;
     const problemsCount = sheets.reduce(
       (acc, { problems }) => acc + problems.length,
       0
@@ -49,6 +51,7 @@ class Board extends React.Component {
                     id={id}
                     name={name}
                     problems={problems}
+                    traineesCount={traineesCount}
                     hovered={hoveredSheetIndex === sheetIndex}
                     hoveredProblemIndex={hoveredProblemIndex}
                     onSheetHover={index =>
