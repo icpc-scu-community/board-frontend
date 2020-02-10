@@ -1,28 +1,51 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { paddingBetweenRows } from '../common';
 import TraineeList from '../TraineeList';
 import BoardCell from '../BoardCell';
 import Sheet from '../Sheet';
+import Loading from '../Loading';
+import Invalid from '../Invalid';
 import styles from './styles';
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       hoveredTraineeIndex: -1,
       hoveredProblemIndex: -1,
       hoveredSheetIndex: -1
     };
   }
 
+  componentDidMount() {
+    fetch('https://api.jsonbin.io/b/5e41be07d18e401661763de5/latest')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ loading: false });
+      });
+  }
+
   render() {
-    const { sheets, trainees, submissions } = this.props;
     const {
+      loading,
+      trainees,
+      sheets,
+      submissions,
+
       hoveredTraineeIndex,
       hoveredProblemIndex,
       hoveredSheetIndex
     } = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
+
+    if (!trainees || !sheets || !submissions) {
+      return <Invalid />;
+    }
 
     const traineesCount = trainees.length;
     const problemsCount = sheets.reduce(
@@ -147,11 +170,5 @@ class Board extends React.Component {
     );
   }
 }
-
-Board.propTypes = {
-  sheets: PropTypes.array.isRequired,
-  trainees: PropTypes.array.isRequired,
-  submissions: PropTypes.object.isRequired
-};
 
 export default Board;
