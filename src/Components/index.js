@@ -1,3 +1,6 @@
-export * from './Trainee';
-export * from './TraineeList';
-export * from './Board';
+export { default as Trainee } from './Trainee';
+export { default as TraineeList } from './TraineeList';
+export { default as Sheet } from './Sheet';
+export { default as Board } from './Board';
+export { default as BoardCell } from './BoardCell';
+export { default as Footer } from './Footer';

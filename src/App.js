@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Board } from './Components';
+import { Board, Footer } from './Components';
 
 const App = () => {
   const trainees = [
@@ -217,6 +217,7 @@ const App = () => {
   return (
     <div className="App">
       <Board sheets={sheets} trainees={trainees} submissions={submissions} />
+      <Footer />
     </div>
   );
 };

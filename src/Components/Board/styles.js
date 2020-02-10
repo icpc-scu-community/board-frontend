@@ -1,4 +1,5 @@
 import css from 'styled-jsx/css';
+import { footerHeight } from '../Footer';
 
 export default css`
   .board {
@@ -7,7 +8,7 @@ export default css`
     overflow: auto;
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: calc(100% - ${footerHeight}px);
   }
 
   /* trainees */
