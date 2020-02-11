@@ -61,9 +61,26 @@ export default css`
     background-color: #d3d3d3;
   }
 
+  .sheet .problems .problem .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+
   .sheet .problems .problem .status {
     font-size: 10px;
     color: gray;
+  }
+
+  .sheet .problems .problem .progress {
+    background-color: #dedede;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
   }
 
   .sheet .problems .problem .note {

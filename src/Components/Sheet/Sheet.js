@@ -51,8 +51,18 @@ class Sheet extends React.Component {
                   onSheetHover(-1);
                 }}
               >
-                <div className="id">{problem.id}</div>
-                <div className="status">{`(${problem.solved}/${traineesCount})`}</div>
+                <div className="name">
+                  <div className="id">{problem.id}</div>
+                  <div className="status">{`(${problem.solved}/${traineesCount})`}</div>
+                </div>
+                <div
+                  className="progress"
+                  style={{
+                    height: `${Math.round(
+                      (problem.solved / traineesCount) * 100
+                    )}%`
+                  }}
+                ></div>
                 <div className="note" style={{ top: sheetProblemIdHeight - 5 }}>
                   {`${problem.id}. ${problem.name}`}
                 </div>
