@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { paddingBetweenRows } from '../common';
 import TraineeList from '../TraineeList';
 import BoardCell from '../BoardCell';
@@ -20,8 +21,29 @@ class Board extends React.Component {
 
   componentDidMount() {
     const apiUrl = process.env.REACT_APP_API_URL;
+    let traineesList, sheetsList;
+
+    const search = this.props.location.search;
+    if (search[0] === '?') {
+      const queryList = search.substr(1).split('&');
+      queryList.forEach(query => {
+        const [key, value] = query.split('=');
+        if (key === 'trainees-list') {
+          traineesList = value;
+        } else if (key === 'sheets-list') {
+          sheetsList = value;
+        }
+      });
+    }
+
+    const valid = traineesList !== undefined && sheetsList !== undefined;
+    if (!valid) {
+      this.setState({ loading: false });
+      return;
+    }
+
     fetch(
-      `${apiUrl}/parse?trainees-list=https://api.jsonbin.io/b/5e41be07d18e401661763de5/latest&sheets-list=https://api.jsonbin.io/b/5e41bf57817c5f163f9a27f8/latest`
+      `${apiUrl}/parse?trainees-list=${traineesList}&sheets-list=${sheetsList}`
     )
       .then(response => response.json())
       .then(data => {
