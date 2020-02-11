@@ -15,6 +15,7 @@ class TraineeList extends React.Component {
     const {
       trainees,
       problemsCount,
+      lastUpdate,
       hoveredTraineeIndex,
       onTraineeHover
     } = this.props;
@@ -27,12 +28,14 @@ class TraineeList extends React.Component {
             style={{ height: sheetNameHeight + sheetProblemIdHeight }}
           >
             <div className="title">Newcomers Training Board</div>
-            <div className="last-update">
-              <span role="img" aria-label="">
-                🕐
-              </span>{' '}
-              Last update: 3 days ago
-            </div>
+            {lastUpdate && (
+              <div className="last-update">
+                <span role="img" aria-label="">
+                  🕐
+                </span>{' '}
+                Last update: {lastUpdate}
+              </div>
+            )}
             <div className="list-desc">
               <div>Trainee</div>
               <div style={{ width: progressWidth }}>Progress</div>
@@ -97,6 +100,7 @@ class TraineeList extends React.Component {
 TraineeList.propTypes = {
   trainees: PropTypes.array.isRequired,
   problemsCount: PropTypes.number.isRequired,
+  lastUpdate: PropTypes.string.isRequired,
   hoveredTraineeIndex: PropTypes.number.isRequired,
   onTraineeHover: PropTypes.func.isRequired
 };

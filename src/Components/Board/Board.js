@@ -47,8 +47,14 @@ class Board extends React.Component {
     )
       .then(response => response.json())
       .then(data => {
-        const { trainees, sheets, submissions } = data;
-        this.setState({ trainees, sheets, submissions, loading: false });
+        const { trainees, sheets, submissions, metadata } = data;
+        this.setState({
+          trainees,
+          sheets,
+          submissions,
+          metadata,
+          loading: false
+        });
       })
       .catch(_ => this.setState({ loading: false }));
   }
@@ -59,6 +65,7 @@ class Board extends React.Component {
       trainees,
       sheets,
       submissions,
+      metadata,
       hoveredTraineeIndex,
       hoveredProblemIndex,
       hoveredSheetIndex
@@ -68,7 +75,7 @@ class Board extends React.Component {
       return <Loading />;
     }
 
-    if (!trainees || !sheets || !submissions) {
+    if (!trainees || !sheets || !submissions || !metadata) {
       return <Invalid />;
     }
 
@@ -85,6 +92,7 @@ class Board extends React.Component {
             <TraineeList
               trainees={trainees}
               problemsCount={problemsCount}
+              lastUpdate={metadata.lastUpdate}
               hoveredTraineeIndex={hoveredTraineeIndex}
               onTraineeHover={() => ({})}
               // index => this.setState({ hoveredTraineeIndex: index })
