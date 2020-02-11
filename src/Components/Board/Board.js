@@ -19,12 +19,16 @@ class Board extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://api.jsonbin.io/b/5e41be07d18e401661763de5/latest')
+    const apiUrl = process.env.REACT_APP_API_URL;
+    fetch(
+      `${apiUrl}/parse?trainees-list=https://api.jsonbin.io/b/5e41be07d18e401661763de5/latest&sheets-list=https://api.jsonbin.io/b/5e41bf57817c5f163f9a27f8/latest`
+    )
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        this.setState({ loading: false });
-      });
+        const { trainees, sheets, submissions } = data;
+        this.setState({ trainees, sheets, submissions, loading: false });
+      })
+      .catch(_ => this.setState({ loading: false }));
   }
 
   render() {
@@ -33,7 +37,6 @@ class Board extends React.Component {
       trainees,
       sheets,
       submissions,
-
       hoveredTraineeIndex,
       hoveredProblemIndex,
       hoveredSheetIndex
