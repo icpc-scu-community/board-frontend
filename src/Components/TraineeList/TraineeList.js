@@ -65,6 +65,7 @@ class TraineeList extends React.Component {
               >
                 <div className="list-item-content">
                   <div className="trainee">
+                    <div className="order">{index + 1}</div>
                     <Trainee
                       name={name}
                       handle={handle}

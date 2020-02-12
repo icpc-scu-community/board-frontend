@@ -26,7 +26,7 @@ export default css`
 
   .info .name {
     font-size: 14px;
-    max-width: 170px;
+    max-width: 135px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

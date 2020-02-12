@@ -69,6 +69,21 @@ export default css`
     background-color: #e0e0e0;
   }
 
+  .order {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #999;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
   .trainee {
     display: flex;
     align-items: center;
