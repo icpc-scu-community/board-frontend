@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from "styled-jsx/css";
 
 export default css`
   .trainee {
@@ -70,7 +70,7 @@ export default css`
   }
 
   .states .state::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 5px;
     height: 5px;
@@ -104,6 +104,7 @@ export default css`
     transition: all 200ms;
     opacity: 0;
     visibility: hidden;
+    z-index: 10;
   }
 
   .state:hover .note {

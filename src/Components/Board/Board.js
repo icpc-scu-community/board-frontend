@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { paddingBetweenRows } from '../common';
-import TraineeList from '../TraineeList';
-import BoardCell from '../BoardCell';
-import Sheet from '../Sheet';
-import Loading from '../Loading';
-import Invalid from '../Invalid';
-import styles from './styles';
+import { paddingBetweenRows } from "../common";
+import TraineeList from "../TraineeList";
+import BoardCell from "../BoardCell";
+import Sheet from "../Sheet";
+import Loading from "../Loading";
+import Invalid from "../Invalid";
+import styles from "./styles";
 
 class Board extends React.Component {
   constructor(props) {
@@ -24,13 +24,13 @@ class Board extends React.Component {
     let traineesList, sheetsList;
 
     const search = this.props.location.search;
-    if (search[0] === '?') {
-      const queryList = search.substr(1).split('&');
+    if (search[0] === "?") {
+      const queryList = search.substr(1).split("&");
       queryList.forEach(query => {
-        const [key, value] = query.split('=');
-        if (key === 'trainees-list') {
+        const [key, value] = query.split("=");
+        if (key === "trainees-list") {
           traineesList = value;
-        } else if (key === 'sheets-list') {
+        } else if (key === "sheets-list") {
           sheetsList = value;
         }
       });
@@ -187,6 +187,10 @@ class Board extends React.Component {
                               ignored={ignored}
                               right={remainingProblems <= 5 && problemsI > 5}
                               bottom={remainingTrainees <= 2 && traineesI > 2}
+                              firstColumn={
+                                sheetIndex === 0 && problemIndex === 0
+                              }
+                              firstRow={traineeIndex === 0}
                             />
                           </div>
                         );

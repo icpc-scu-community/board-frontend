@@ -1,21 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cn from 'classnames';
-import { blockSize } from '../common';
-import styles from './styles';
+import React from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
+import { blockSize } from "../common";
+import styles from "./styles";
 
 class BoardCell extends React.Component {
   render() {
-    const { sheetId, submission, ignored, right, bottom } = this.props;
+    const {
+      sheetId,
+      submission,
+      ignored,
+      right,
+      bottom,
+      firstColumn,
+      firstRow
+    } = this.props;
     const { verdict, triesBeforeAC, list } = submission;
 
     return (
       <>
         <div
-          className={cn('board-cell', {
-            ac: verdict === 'AC',
-            'not-ac': verdict !== 'AC',
-            'not-solved': verdict === undefined,
+          className={cn("board-cell", {
+            "first-column": firstColumn,
+            "first-row": firstRow,
+            ac: verdict === "AC",
+            "not-ac": verdict !== "AC",
+            "not-solved": verdict === undefined,
             ignored
           })}
           style={{ width: blockSize, height: blockSize }}
@@ -23,12 +33,12 @@ class BoardCell extends React.Component {
           {verdict !== undefined ? (
             <>
               <div>{verdict}</div>
-              <div>{triesBeforeAC ? `+${triesBeforeAC}` : ''}</div>
+              <div>{triesBeforeAC ? `+${triesBeforeAC}` : ""}</div>
               <div
                 className="list"
                 style={{
-                  [right ? 'right' : 'left']: blockSize / 2 - 15,
-                  [bottom ? 'bottom' : 'top']: blockSize / 2 + 15
+                  [right ? "right" : "left"]: blockSize / 2 - 15,
+                  [bottom ? "bottom" : "top"]: blockSize / 2 + 15
                 }}
               >
                 {list.map(
@@ -44,9 +54,9 @@ class BoardCell extends React.Component {
                       target="_blank"
                     >
                       <div
-                        className={cn('state', {
-                          ac: submissionVerdict === 'AC',
-                          'not-ac': submissionVerdict !== 'AC'
+                        className={cn("state", {
+                          ac: submissionVerdict === "AC",
+                          "not-ac": submissionVerdict !== "AC"
                         })}
                       ></div>
                       <div>{submissionId}</div>
@@ -71,7 +81,9 @@ BoardCell.propTypes = {
   submission: PropTypes.object.isRequired,
   ignored: PropTypes.bool.isRequired,
   right: PropTypes.bool.isRequired,
-  bottom: PropTypes.bool.isRequired
+  bottom: PropTypes.bool.isRequired,
+  firstColumn: PropTypes.bool,
+  firstRow: PropTypes.bool
 };
 
 export default BoardCell;

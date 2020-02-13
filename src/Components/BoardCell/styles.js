@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from "styled-jsx/css";
 
 export default css`
   .board-cell {
@@ -6,13 +6,20 @@ export default css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid;
     border-right: 1px solid;
     border-bottom: 1px solid;
     box-sizing: border-box;
     font-size: 12px;
     cursor: default;
     position: relative;
+  }
+
+  .board-cell.first-column {
+    border-left: 1px solid;
+  }
+
+  .board-cell.first-row {
+    border-top: 1px solid;
   }
 
   .board-cell.ignored {

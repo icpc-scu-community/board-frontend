@@ -1,5 +1,5 @@
-import css from 'styled-jsx/css';
-import { footerHeight } from '../Footer';
+import css from "styled-jsx/css";
+import { footerHeight } from "../Footer";
 const traineesListWidth = 330;
 
 export default css`
