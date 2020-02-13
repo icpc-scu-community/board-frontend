@@ -1,4 +1,4 @@
-import css from "styled-jsx/css";
+import css from 'styled-jsx/css';
 
 export default css`
   .board-cell {
@@ -45,7 +45,6 @@ export default css`
 
   .board-cell .tries-before-ac {
     font-size: 10px;
-    margin-top: -2px;
   }
 
   .list {
