@@ -33,7 +33,9 @@ class BoardCell extends React.Component {
           {verdict !== undefined ? (
             <>
               <div>{verdict}</div>
-              <div>{triesBeforeAC ? `+${triesBeforeAC}` : ""}</div>
+              <div className="tries-before-ac">
+                {triesBeforeAC ? `+${triesBeforeAC}` : ""}
+              </div>
               <div
                 className="list"
                 style={{

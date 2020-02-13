@@ -43,6 +43,11 @@ export default css`
     font-size: 16px;
   }
 
+  .board-cell .tries-before-ac {
+    font-size: 10px;
+    margin-top: -2px;
+  }
+
   .list {
     position: absolute;
     z-index: 1;
