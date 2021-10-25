@@ -6,14 +6,14 @@ import styles from './styles';
 
 class Sheet extends React.Component {
   render() {
-    const { id, name, problems, traineesCount, hovered, hoveredProblemIndex, onSheetHover, onProblemHover } =
+    const { id, groupId, name, problems, traineesCount, hovered, hoveredProblemIndex, onSheetHover, onProblemHover } =
       this.props;
 
     return (
       <>
         <div className="sheet">
           <a
-            href={`https://codeforces.com/group/MWSDmqGsZm/contest/${id}`}
+            href={`https://codeforces.com/group/${groupId}/contest/${id}`}
             rel="noopener noreferrer"
             target="_blank"
             className={cn('title', { hovered })}
@@ -27,7 +27,7 @@ class Sheet extends React.Component {
             {problems.map((problem, index) => (
               <a
                 key={index}
-                href={`https://codeforces.com/group/MWSDmqGsZm/contest/${id}/problem/${problem.id}`}
+                href={`https://codeforces.com/group/${groupId}/contest/${id}/problem/${problem.id}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 className={cn('problem', {
@@ -67,7 +67,8 @@ class Sheet extends React.Component {
 }
 
 Sheet.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  groupId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   problems: PropTypes.arrayOf(
     PropTypes.shape({

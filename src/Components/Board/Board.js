@@ -87,10 +87,11 @@ class Board extends React.Component {
           </div>
           <div className="sheets-section">
             <div className="sheets">
-              {sheets.map(({ id, name, problems }, sheetIndex) => (
+              {sheets.map(({ id, groupId, name, problems }, sheetIndex) => (
                 <div className="sheet-collection" key={sheetIndex}>
                   <Sheet
                     id={id}
+                    groupId={groupId}
                     name={name}
                     problems={problems}
                     traineesCount={traineesCount}
