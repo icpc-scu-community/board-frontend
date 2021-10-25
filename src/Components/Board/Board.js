@@ -68,6 +68,10 @@ class Board extends React.Component {
     const traineesCount = trainees.length;
     const problemsCount = sheets.reduce((acc, { problems }) => acc + problems.length, 0);
 
+    const rtf = new Intl.RelativeTimeFormat('en', { style: 'long' });
+    const relativeTime = Math.round((metadata.lastRun - new Date()) / (1000 * 60));
+    const lastUpdate = rtf.format(relativeTime, 'minutes');
+
     return (
       <>
         <div className="board">
@@ -75,7 +79,7 @@ class Board extends React.Component {
             <TraineeList
               trainees={trainees}
               problemsCount={problemsCount}
-              lastUpdate={metadata.lastUpdate}
+              lastUpdate={lastUpdate}
               hoveredTraineeIndex={hoveredTraineeIndex}
               onTraineeHover={() => ({})}
               // index => this.setState({ hoveredTraineeIndex: index })
