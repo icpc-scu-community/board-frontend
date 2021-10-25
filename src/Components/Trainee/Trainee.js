@@ -5,17 +5,22 @@ import styles from './styles';
 
 class Trainee extends React.Component {
   render() {
-    const { name, handle, states, problemsCount } = this.props;
+    const { name, handle, states, problemsCount, photo } = this.props;
     const shortName = getShortName(name);
     const colorPercent = getUniqueHashFromName(name);
     const { solved, tried, submissions } = states;
     const missed = problemsCount - (solved + tried);
 
+    const hasPhoto = photo && photo !== 'https://userpic.codeforces.org/no-title.jpg';
+    const withoutPhotoStyle = { backgroundColor: `hsl(${colorPercent * 360}, 100%, 75%)` };
+    const withPhotoStyle = { backgroundImage: `url(${photo})` };
+    const photoStyle = hasPhoto ? withPhotoStyle : withoutPhotoStyle;
+
     return (
       <>
         <div className="trainee">
-          <div className="photo" style={{ backgroundColor: `hsl(${colorPercent * 360}, 100%, 75%)` }}>
-            {shortName}
+          <div className="photo" style={photoStyle}>
+            {!hasPhoto && shortName}
           </div>
           <div className="info">
             <div className="name">{name.toLowerCase().trim()}</div>
@@ -59,6 +64,7 @@ Trainee.propTypes = {
     submissions: PropTypes.number.isRequired,
   }).isRequired,
   problemsCount: PropTypes.number.isRequired,
+  photo: PropTypes.string,
 };
 
 export default Trainee;

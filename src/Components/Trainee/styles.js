@@ -16,6 +16,8 @@ export default css`
     border-radius: 5px;
     font-size: 14px;
     user-select: none;
+    background-size: cover;
+    background-position: center center;
   }
 
   .info {
