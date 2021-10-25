@@ -21,28 +21,16 @@ class Board extends React.Component {
 
   componentDidMount() {
     const apiUrl = process.env.REACT_APP_API_URL;
-    let traineesList, sheetsList;
-
     const search = this.props.location.search;
-    if (search[0] === '?') {
-      const queryList = search.substr(1).split('&');
-      queryList.forEach((query) => {
-        const [key, value] = query.split('=');
-        if (key === 'trainees-list') {
-          traineesList = value;
-        } else if (key === 'sheets-list') {
-          sheetsList = value;
-        }
-      });
-    }
+    const searchParams = new URLSearchParams(search);
+    const configs = searchParams.get('configs');
 
-    const valid = traineesList !== undefined && sheetsList !== undefined;
-    if (!valid) {
+    if (!configs) {
       this.setState({ loading: false });
       return;
     }
 
-    fetch(`${apiUrl}/parse?trainees-list=${traineesList}&sheets-list=${sheetsList}`)
+    fetch(`${apiUrl}?configs=${configs}`)
       .then((response) => response.json())
       .then((data) => {
         const { trainees, sheets, submissions, metadata } = data;
