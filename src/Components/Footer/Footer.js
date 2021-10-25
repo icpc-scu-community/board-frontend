@@ -14,7 +14,7 @@ class Footer extends React.Component {
                 <img src={icpcSCU} alt="Assiut ICPC Community" />
               </div>
               <div className="desc">
-                <p>Board is Made and Maintained by</p>
+                <p>Board is made and maintained by</p>
                 <p>@Suez Canal University ICPC Community</p>
               </div>
             </a>
@@ -25,7 +25,7 @@ class Footer extends React.Component {
                 <img src={icpcAssiut} alt="Assiut ICPC Community" />
               </div>
               <div className="desc">
-                <p>Sheets are Written and Tested and Maintained by</p>
+                <p>Sheets are written, tested, and maintained by</p>
                 <p>
                   @Assiut University ICPC Community
                   <span role="img" aria-label="" style={{ color: 'red', marginLeft: 5 }}>
