@@ -6,8 +6,33 @@ import Trainee from '../Trainee';
 import styles, { progressWidth } from './styles';
 
 class TraineeList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { traineePhotos: {} };
+  }
+
+  componentDidMount() {
+    const { trainees } = this.props;
+    const handles = trainees.map(({ handle }) => handle);
+    const cfUserInfoUrl = `https://codeforces.com/api/user.info?handles=${handles.join(';')}`;
+
+    fetch(cfUserInfoUrl)
+      .then((response) => response.json())
+      .then(({ result }) => {
+        const traineePhotos = result.reduce(
+          (photos, { handle, titlePhoto }) => ({
+            ...photos,
+            [handle.toLowerCase().trim()]: titlePhoto,
+          }),
+          {},
+        );
+        this.setState({ traineePhotos });
+      });
+  }
+
   render() {
     const { trainees, problemsCount, lastUpdate, hoveredTraineeIndex, onTraineeHover } = this.props;
+    const { traineePhotos } = this.state;
 
     return (
       <>
@@ -52,7 +77,13 @@ class TraineeList extends React.Component {
                 <div className="list-item-content">
                   <div className="trainee">
                     <div className="order">{index + 1}</div>
-                    <Trainee name={name} handle={handle} states={states} problemsCount={problemsCount} />
+                    <Trainee
+                      name={name}
+                      handle={handle}
+                      states={states}
+                      problemsCount={problemsCount}
+                      photo={traineePhotos[handle]}
+                    />
                   </div>
                   <div className="progress">
                     <div className="percentage">{`${Math.round((states.solved / problemsCount) * 100)}%`}</div>
