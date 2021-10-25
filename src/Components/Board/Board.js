@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { paddingBetweenRows } from "../common";
-import TraineeList from "../TraineeList";
-import BoardCell from "../BoardCell";
-import Sheet from "../Sheet";
-import Loading from "../Loading";
-import Invalid from "../Invalid";
-import styles from "./styles";
+import { paddingBetweenRows } from '../common';
+import TraineeList from '../TraineeList';
+import BoardCell from '../BoardCell';
+import Sheet from '../Sheet';
+import Loading from '../Loading';
+import Invalid from '../Invalid';
+import styles from './styles';
 
 class Board extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Board extends React.Component {
       loading: true,
       hoveredTraineeIndex: -1,
       hoveredProblemIndex: -1,
-      hoveredSheetIndex: -1
+      hoveredSheetIndex: -1,
     };
   }
 
@@ -24,13 +24,13 @@ class Board extends React.Component {
     let traineesList, sheetsList;
 
     const search = this.props.location.search;
-    if (search[0] === "?") {
-      const queryList = search.substr(1).split("&");
-      queryList.forEach(query => {
-        const [key, value] = query.split("=");
-        if (key === "trainees-list") {
+    if (search[0] === '?') {
+      const queryList = search.substr(1).split('&');
+      queryList.forEach((query) => {
+        const [key, value] = query.split('=');
+        if (key === 'trainees-list') {
           traineesList = value;
-        } else if (key === "sheets-list") {
+        } else if (key === 'sheets-list') {
           sheetsList = value;
         }
       });
@@ -42,21 +42,19 @@ class Board extends React.Component {
       return;
     }
 
-    fetch(
-      `${apiUrl}/parse?trainees-list=${traineesList}&sheets-list=${sheetsList}`
-    )
-      .then(response => response.json())
-      .then(data => {
+    fetch(`${apiUrl}/parse?trainees-list=${traineesList}&sheets-list=${sheetsList}`)
+      .then((response) => response.json())
+      .then((data) => {
         const { trainees, sheets, submissions, metadata } = data;
         this.setState({
           trainees,
           sheets,
           submissions,
           metadata,
-          loading: false
+          loading: false,
         });
       })
-      .catch(_ => this.setState({ loading: false }));
+      .catch((_) => this.setState({ loading: false }));
   }
 
   render() {
@@ -68,7 +66,7 @@ class Board extends React.Component {
       metadata,
       hoveredTraineeIndex,
       hoveredProblemIndex,
-      hoveredSheetIndex
+      hoveredSheetIndex,
     } = this.state;
 
     if (loading) {
@@ -80,10 +78,7 @@ class Board extends React.Component {
     }
 
     const traineesCount = trainees.length;
-    const problemsCount = sheets.reduce(
-      (acc, { problems }) => acc + problems.length,
-      0
-    );
+    const problemsCount = sheets.reduce((acc, { problems }) => acc + problems.length, 0);
 
     return (
       <>
@@ -121,7 +116,7 @@ class Board extends React.Component {
               className="trainee-problems-status"
               style={{
                 paddingTop: paddingBetweenRows,
-                paddingBottom: paddingBetweenRows
+                paddingBottom: paddingBetweenRows,
               }}
             >
               {trainees.map(({ handle }, traineeIndex) => {
@@ -140,7 +135,7 @@ class Board extends React.Component {
                     className="trainee-problems-row"
                     style={{
                       paddingTop: paddingBetweenRows,
-                      paddingBottom: paddingBetweenRows
+                      paddingBottom: paddingBetweenRows,
                     }}
                   >
                     {sheets.map(({ id: sheetId, problems }, sheetIndex) =>
@@ -149,18 +144,12 @@ class Board extends React.Component {
                         problemsI++;
 
                         const submission =
-                          (submissions[handle] &&
-                            submissions[handle][`${sheetId}-${problemId}`]) ||
-                          {};
+                          (submissions[handle] && submissions[handle][`${sheetId}-${problemId}`]) || {};
                         const ignored = !(
-                          (hoveredTraineeIndex === -1 &&
-                            hoveredSheetIndex === -1 &&
-                            hoveredProblemIndex === -1) ||
+                          (hoveredTraineeIndex === -1 && hoveredSheetIndex === -1 && hoveredProblemIndex === -1) ||
                           hoveredTraineeIndex === traineeIndex ||
-                          (hoveredProblemIndex === -1 &&
-                            hoveredSheetIndex === sheetIndex) ||
-                          (hoveredProblemIndex === problemIndex &&
-                            hoveredSheetIndex === sheetIndex)
+                          (hoveredProblemIndex === -1 && hoveredSheetIndex === sheetIndex) ||
+                          (hoveredProblemIndex === problemIndex && hoveredSheetIndex === sheetIndex)
                         );
 
                         return (
@@ -187,14 +176,12 @@ class Board extends React.Component {
                               ignored={ignored}
                               right={remainingProblems <= 5 && problemsI > 5}
                               bottom={remainingTrainees <= 2 && traineesI > 2}
-                              firstColumn={
-                                sheetIndex === 0 && problemIndex === 0
-                              }
+                              firstColumn={sheetIndex === 0 && problemIndex === 0}
                               firstRow={traineeIndex === 0}
                             />
                           </div>
                         );
-                      })
+                      }),
                     )}
                   </div>
                 );

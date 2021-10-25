@@ -1,32 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import {
-  sheetNameHeight,
-  sheetProblemIdHeight,
-  blockSize,
-  paddingBetweenRows
-} from '../common';
+import { sheetNameHeight, sheetProblemIdHeight, blockSize, paddingBetweenRows } from '../common';
 import Trainee from '../Trainee';
 import styles, { progressWidth } from './styles';
 
 class TraineeList extends React.Component {
   render() {
-    const {
-      trainees,
-      problemsCount,
-      lastUpdate,
-      hoveredTraineeIndex,
-      onTraineeHover
-    } = this.props;
+    const { trainees, problemsCount, lastUpdate, hoveredTraineeIndex, onTraineeHover } = this.props;
 
     return (
       <>
         <div className="trainee-list">
-          <div
-            className="header"
-            style={{ height: sheetNameHeight + sheetProblemIdHeight }}
-          >
+          <div className="header" style={{ height: sheetNameHeight + sheetProblemIdHeight }}>
             <div className="title">Newcomers Training Board</div>
             {lastUpdate && (
               <div className="last-update">
@@ -45,20 +31,20 @@ class TraineeList extends React.Component {
             className="trainees"
             style={{
               paddingTop: paddingBetweenRows,
-              paddingBottom: paddingBetweenRows
+              paddingBottom: paddingBetweenRows,
             }}
           >
             {trainees.map(({ name, handle, states }, index) => (
               <div
                 className={cn('list-item', {
                   even: index % 2,
-                  hovered: hoveredTraineeIndex === index
+                  hovered: hoveredTraineeIndex === index,
                 })}
                 key={index}
                 style={{
                   height: blockSize,
                   paddingTop: paddingBetweenRows,
-                  paddingBottom: paddingBetweenRows
+                  paddingBottom: paddingBetweenRows,
                 }}
                 onMouseEnter={() => onTraineeHover(index)}
                 onMouseLeave={() => onTraineeHover(-1)}
@@ -66,24 +52,17 @@ class TraineeList extends React.Component {
                 <div className="list-item-content">
                   <div className="trainee">
                     <div className="order">{index + 1}</div>
-                    <Trainee
-                      name={name}
-                      handle={handle}
-                      states={states}
-                      problemsCount={problemsCount}
-                    />
+                    <Trainee name={name} handle={handle} states={states} problemsCount={problemsCount} />
                   </div>
                   <div className="progress">
-                    <div className="percentage">{`${Math.round(
-                      (states.solved / problemsCount) * 100
-                    )}%`}</div>
+                    <div className="percentage">{`${Math.round((states.solved / problemsCount) * 100)}%`}</div>
                     <div className="counts">
                       ({states.solved}/{problemsCount})
                     </div>
                     <div
                       className="bar"
                       style={{
-                        width: `${(states.solved / problemsCount) * 100}%`
+                        width: `${(states.solved / problemsCount) * 100}%`,
                       }}
                     />
                   </div>
@@ -103,7 +82,7 @@ TraineeList.propTypes = {
   problemsCount: PropTypes.number.isRequired,
   lastUpdate: PropTypes.string.isRequired,
   hoveredTraineeIndex: PropTypes.number.isRequired,
-  onTraineeHover: PropTypes.func.isRequired
+  onTraineeHover: PropTypes.func.isRequired,
 };
 
 export default TraineeList;

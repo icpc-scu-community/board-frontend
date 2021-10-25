@@ -14,20 +14,13 @@ class Trainee extends React.Component {
     return (
       <>
         <div className="trainee">
-          <div
-            className="photo"
-            style={{ backgroundColor: `hsl(${colorPercent * 360}, 100%, 75%)` }}
-          >
+          <div className="photo" style={{ backgroundColor: `hsl(${colorPercent * 360}, 100%, 75%)` }}>
             {shortName}
           </div>
           <div className="info">
             <div className="name">{name.trim()}</div>
             <div className="handle">
-              <a
-                href={`https://codeforces.com/profile/${handle}`}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
+              <a href={`https://codeforces.com/profile/${handle}`} rel="noopener noreferrer" target="_blank">
                 @{handle.trim()}
               </a>
             </div>
@@ -63,9 +56,9 @@ Trainee.propTypes = {
   states: PropTypes.shape({
     solved: PropTypes.number.isRequired,
     tried: PropTypes.number.isRequired,
-    submissions: PropTypes.number.isRequired
+    submissions: PropTypes.number.isRequired,
   }).isRequired,
-  problemsCount: PropTypes.number.isRequired
+  problemsCount: PropTypes.number.isRequired,
 };
 
 export default Trainee;

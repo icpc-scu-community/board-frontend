@@ -1,6 +1,6 @@
 import { primes } from '../consts';
 
-export const getShortName = name => {
+export const getShortName = (name) => {
   return name
     .trim()
     .split(' ')
@@ -9,13 +9,8 @@ export const getShortName = name => {
     .toUpperCase();
 };
 
-export const getUniqueHashFromName = name => {
-  const chars = name
-    .trim()
-    .toUpperCase()
-    .split(' ')
-    .join('')
-    .split('');
+export const getUniqueHashFromName = (name) => {
+  const chars = name.trim().toUpperCase().split(' ').join('').split('');
 
   let rand = 0;
   for (let i = 0; i < chars.length; i++) {

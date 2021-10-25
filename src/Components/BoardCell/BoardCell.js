@@ -1,71 +1,56 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cn from "classnames";
-import { blockSize } from "../common";
-import styles from "./styles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import { blockSize } from '../common';
+import styles from './styles';
 
 class BoardCell extends React.Component {
   render() {
-    const {
-      sheetId,
-      submission,
-      ignored,
-      right,
-      bottom,
-      firstColumn,
-      firstRow
-    } = this.props;
+    const { sheetId, submission, ignored, right, bottom, firstColumn, firstRow } = this.props;
     const { verdict, triesBeforeAC, list } = submission;
 
     return (
       <>
         <div
-          className={cn("board-cell", {
-            "first-column": firstColumn,
-            "first-row": firstRow,
-            ac: verdict === "AC",
-            "not-ac": verdict !== "AC",
-            "not-solved": verdict === undefined,
-            ignored
+          className={cn('board-cell', {
+            'first-column': firstColumn,
+            'first-row': firstRow,
+            ac: verdict === 'AC',
+            'not-ac': verdict !== 'AC',
+            'not-solved': verdict === undefined,
+            ignored,
           })}
           style={{ width: blockSize, height: blockSize }}
         >
           {verdict !== undefined ? (
             <>
               <div>{verdict}</div>
-              <div className="tries-before-ac">
-                {triesBeforeAC ? `+${triesBeforeAC}` : ""}
-              </div>
+              <div className="tries-before-ac">{triesBeforeAC ? `+${triesBeforeAC}` : ''}</div>
               <div
                 className="list"
                 style={{
-                  [right ? "right" : "left"]: blockSize / 2 - 15,
-                  [bottom ? "bottom" : "top"]: blockSize / 2 + 15
+                  [right ? 'right' : 'left']: blockSize / 2 - 15,
+                  [bottom ? 'bottom' : 'top']: blockSize / 2 + 15,
                 }}
               >
-                {list.map(
-                  (
-                    { id: submissionId, message, verdict: submissionVerdict },
-                    submissionIndex
-                  ) => (
-                    <a
-                      key={submissionIndex}
-                      className="list-item"
-                      href={`https://codeforces.com/group/MWSDmqGsZm/contest/${sheetId}/submission/${submissionId}`}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <div
-                        className={cn("state", {
-                          ac: submissionVerdict === "AC",
-                          "not-ac": submissionVerdict !== "AC"
-                        })}
-                      ></div>
-                      <div>{submissionId}</div>
-                      <div>{message}</div>
-                    </a>
-                  )
-                )}
+                {list.map(({ id: submissionId, message, verdict: submissionVerdict }, submissionIndex) => (
+                  <a
+                    key={submissionIndex}
+                    className="list-item"
+                    href={`https://codeforces.com/group/MWSDmqGsZm/contest/${sheetId}/submission/${submissionId}`}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <div
+                      className={cn('state', {
+                        ac: submissionVerdict === 'AC',
+                        'not-ac': submissionVerdict !== 'AC',
+                      })}
+                    ></div>
+                    <div>{submissionId}</div>
+                    <div>{message}</div>
+                  </a>
+                ))}
               </div>
             </>
           ) : (
@@ -85,7 +70,7 @@ BoardCell.propTypes = {
   right: PropTypes.bool.isRequired,
   bottom: PropTypes.bool.isRequired,
   firstColumn: PropTypes.bool,
-  firstRow: PropTypes.bool
+  firstRow: PropTypes.bool,
 };
 
 export default BoardCell;

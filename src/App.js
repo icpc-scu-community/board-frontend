@@ -9,7 +9,7 @@ const App = () => (
     <Switch>
       <Route
         path="/"
-        component={props => (
+        component={(props) => (
           <div className="App">
             <Board {...props} />
             <Footer />

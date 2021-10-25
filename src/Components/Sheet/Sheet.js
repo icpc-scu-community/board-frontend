@@ -6,16 +6,8 @@ import styles from './styles';
 
 class Sheet extends React.Component {
   render() {
-    const {
-      id,
-      name,
-      problems,
-      traineesCount,
-      hovered,
-      hoveredProblemIndex,
-      onSheetHover,
-      onProblemHover
-    } = this.props;
+    const { id, name, problems, traineesCount, hovered, hoveredProblemIndex, onSheetHover, onProblemHover } =
+      this.props;
 
     return (
       <>
@@ -39,7 +31,7 @@ class Sheet extends React.Component {
                 rel="noopener noreferrer"
                 target="_blank"
                 className={cn('problem', {
-                  hovered: hovered && hoveredProblemIndex === index
+                  hovered: hovered && hoveredProblemIndex === index,
                 })}
                 style={{ width: blockSize, height: sheetProblemIdHeight }}
                 onMouseEnter={() => {
@@ -58,9 +50,7 @@ class Sheet extends React.Component {
                 <div
                   className="progress"
                   style={{
-                    height: `${Math.round(
-                      (problem.solved / traineesCount) * 100
-                    )}%`
+                    height: `${Math.round((problem.solved / traineesCount) * 100)}%`,
                   }}
                 ></div>
                 <div className="note" style={{ top: sheetProblemIdHeight - 5 }}>
@@ -83,14 +73,14 @@ Sheet.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      solved: PropTypes.number.isRequired
-    })
+      solved: PropTypes.number.isRequired,
+    }),
   ).isRequired,
   traineesCount: PropTypes.number.isRequired,
   hovered: PropTypes.bool.isRequired,
   hoveredProblemIndex: PropTypes.number.isRequired,
   onSheetHover: PropTypes.func.isRequired,
-  onProblemHover: PropTypes.func.isRequired
+  onProblemHover: PropTypes.func.isRequired,
 };
 
 export default Sheet;
