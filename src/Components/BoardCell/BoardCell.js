@@ -6,8 +6,9 @@ import styles from './styles';
 
 class BoardCell extends React.Component {
   render() {
-    const { sheetId, submission, ignored, right, bottom, firstColumn, firstRow } = this.props;
-    const { verdict, triesBeforeAC, list } = submission;
+    const { submission, ignored, firstColumn, firstRow } = this.props;
+    const { isAc, triesBeforeAc } = submission;
+    const isSolved = isAc !== undefined;
 
     return (
       <>
@@ -15,43 +16,17 @@ class BoardCell extends React.Component {
           className={cn('board-cell', {
             'first-column': firstColumn,
             'first-row': firstRow,
-            ac: verdict === 'AC',
-            'not-ac': verdict !== 'AC',
-            'not-solved': verdict === undefined,
+            ac: isAc,
+            'not-ac': !isAc,
+            'not-solved': !isSolved,
             ignored,
           })}
           style={{ width: blockSize, height: blockSize }}
         >
-          {verdict !== undefined ? (
+          {isSolved ? (
             <>
-              <div>{verdict}</div>
-              <div className="tries-before-ac">{triesBeforeAC ? `+${triesBeforeAC}` : ''}</div>
-              <div
-                className="list"
-                style={{
-                  [right ? 'right' : 'left']: blockSize / 2 - 15,
-                  [bottom ? 'bottom' : 'top']: blockSize / 2 + 15,
-                }}
-              >
-                {list.map(({ id: submissionId, message, verdict: submissionVerdict }, submissionIndex) => (
-                  <a
-                    key={submissionIndex}
-                    className="list-item"
-                    href={`https://codeforces.com/group/MWSDmqGsZm/contest/${sheetId}/submission/${submissionId}`}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <div
-                      className={cn('state', {
-                        ac: submissionVerdict === 'AC',
-                        'not-ac': submissionVerdict !== 'AC',
-                      })}
-                    ></div>
-                    <div>{submissionId}</div>
-                    <div>{message}</div>
-                  </a>
-                ))}
-              </div>
+              <div>{isAc ? 'AC' : ''}</div>
+              <div className="tries-before-ac">{triesBeforeAc ? `+${triesBeforeAc}` : ''}</div>
             </>
           ) : (
             <div>?</div>
@@ -64,7 +39,7 @@ class BoardCell extends React.Component {
 }
 
 BoardCell.propTypes = {
-  sheetId: PropTypes.string.isRequired,
+  sheetId: PropTypes.number.isRequired,
   submission: PropTypes.object.isRequired,
   ignored: PropTypes.bool.isRequired,
   right: PropTypes.bool.isRequired,
