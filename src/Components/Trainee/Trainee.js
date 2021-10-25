@@ -18,7 +18,7 @@ class Trainee extends React.Component {
             {shortName}
           </div>
           <div className="info">
-            <div className="name">{name.trim()}</div>
+            <div className="name">{name.toLowerCase().trim()}</div>
             <div className="handle">
               <a href={`https://codeforces.com/profile/${handle}`} rel="noopener noreferrer" target="_blank">
                 @{handle.trim()}

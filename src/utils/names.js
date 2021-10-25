@@ -5,12 +5,18 @@ export const getShortName = (name) => {
     .trim()
     .split(' ')
     .reduce((acc, name) => (name.length ? `${acc}${name[0]}` : acc), '')
-    .substr(0, 4)
+    .substr(0, 3)
     .toUpperCase();
 };
 
 export const getUniqueHashFromName = (name) => {
-  const chars = name.trim().toUpperCase().split(' ').join('').split('');
+  const chars = name
+    .trim()
+    .toUpperCase()
+    .split(' ')
+    .join('')
+    .split('')
+    .filter((char) => char >= 'A' && char <= 'Z');
 
   let rand = 0;
   for (let i = 0; i < chars.length; i++) {
