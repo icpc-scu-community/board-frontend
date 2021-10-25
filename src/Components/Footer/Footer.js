@@ -9,11 +9,7 @@ class Footer extends React.Component {
       <>
         <div className="footer">
           <div className="uni">
-            <a
-              href="https://www.facebook.com/ICPCSCU/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://www.facebook.com/ICPCSCU/" rel="noopener noreferrer" target="_blank">
               <div className="logo">
                 <img src={icpcSCU} alt="Assiut ICPC Community" />
               </div>
@@ -24,11 +20,7 @@ class Footer extends React.Component {
             </a>
           </div>
           <div className="uni">
-            <a
-              href="https://www.facebook.com/icpc.assiut/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href="https://www.facebook.com/icpc.assiut/" rel="noopener noreferrer" target="_blank">
               <div className="logo">
                 <img src={icpcAssiut} alt="Assiut ICPC Community" />
               </div>
@@ -36,11 +28,7 @@ class Footer extends React.Component {
                 <p>Sheets are Written and Tested and Maintained by</p>
                 <p>
                   @Assiut University ICPC Community
-                  <span
-                    role="img"
-                    aria-label=""
-                    style={{ color: 'red', marginLeft: 5 }}
-                  >
+                  <span role="img" aria-label="" style={{ color: 'red', marginLeft: 5 }}>
                     ❤️
                   </span>
                 </p>

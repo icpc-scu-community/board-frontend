@@ -7,7 +7,9 @@
     "dev": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src --ext .js,.ts",
+    "lint:fix": "eslint ./src --ext .js,.ts --fix"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -25,10 +27,11 @@
   },
   "devDependencies": {
     "customize-cra": "^1.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
     "react-app-rewired": "^2.1.8"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
