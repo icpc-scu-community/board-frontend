@@ -21,16 +21,8 @@ class Board extends React.Component {
 
   componentDidMount() {
     const apiUrl = process.env.REACT_APP_API_URL;
-    const search = this.props.location.search;
-    const searchParams = new URLSearchParams(search);
-    const configs = searchParams.get('configs');
 
-    if (!configs) {
-      this.setState({ loading: false });
-      return;
-    }
-
-    fetch(`${apiUrl}?configs=${configs}`)
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         const { trainees, sheets, submissions, metadata } = data;
