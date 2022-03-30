@@ -13,7 +13,7 @@ class TraineeList extends React.Component {
       <>
         <div className="trainee-list">
           <div className="header" style={{ height: sheetNameHeight + sheetProblemIdHeight }}>
-            <div className="title">Codeforces Training Board</div>
+            <div className="title">Ramadan Challenge Board</div>
             {lastUpdate && (
               <div className="last-update">
                 <span role="img" aria-label="">
