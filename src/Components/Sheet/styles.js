@@ -100,4 +100,8 @@ export default css`
     opacity: 1;
     visibility: visible;
   }
+
+  .sheet .problems .problem.placeholder {
+    user-select: none;
+  }
 `;

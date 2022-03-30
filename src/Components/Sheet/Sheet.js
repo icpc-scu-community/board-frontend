@@ -8,6 +8,7 @@ class Sheet extends React.Component {
   render() {
     const { id, groupId, name, problems, traineesCount, hovered, hoveredProblemIndex, onSheetHover, onProblemHover } =
       this.props;
+    const placeholderCount = Math.max(0, 26 - problems.length);
 
     return (
       <>
@@ -57,6 +58,18 @@ class Sheet extends React.Component {
                   {`${problem.id}. ${problem.name}`}
                 </div>
               </a>
+            ))}
+            {[...Array(placeholderCount)].map((_, index) => (
+              <div
+                key={`placeholder_header_${index}`}
+                className="problem placeholder"
+                style={{ width: blockSize, height: sheetProblemIdHeight }}
+              >
+                <div className="name">
+                  <div className="id">?</div>
+                </div>
+                <div className="progress" style={{ height: '0%' }}></div>
+              </div>
             ))}
           </div>
         </div>

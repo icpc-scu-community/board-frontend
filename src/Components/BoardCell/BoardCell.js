@@ -39,11 +39,8 @@ class BoardCell extends React.Component {
 }
 
 BoardCell.propTypes = {
-  sheetId: PropTypes.number.isRequired,
   submission: PropTypes.object.isRequired,
   ignored: PropTypes.bool.isRequired,
-  right: PropTypes.bool.isRequired,
-  bottom: PropTypes.bool.isRequired,
   firstColumn: PropTypes.bool,
   firstRow: PropTypes.bool,
 };
