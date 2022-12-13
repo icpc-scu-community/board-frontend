@@ -1,5 +1,8 @@
 # Board Frontend <a target="_blank" href="https://kounter.tk"><img align="right" src="https://t.ly/Cq_c" /></a>
 
+[![Build React App](https://github.com/icpc-scu-community/board-frontend/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/icpc-scu-community/board-frontend/actions/workflows/build.yml)
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-green)
+
 ![image](https://user-images.githubusercontent.com/36763164/207388796-68673d05-d91a-473a-b5d6-327a0487c2f5.png)
 ## What is this?
 
